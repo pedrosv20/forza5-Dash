@@ -12,8 +12,6 @@
 		079C25542963540D00DBD90D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 079C25532963540D00DBD90D /* Assets.xcassets */; };
 		079C25572963540D00DBD90D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 079C25562963540D00DBD90D /* Preview Assets.xcassets */; };
 		079C25612963540D00DBD90D /* ForzaDashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079C25602963540D00DBD90D /* ForzaDashTests.swift */; };
-		079C256B2963540D00DBD90D /* ForzaDashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079C256A2963540D00DBD90D /* ForzaDashUITests.swift */; };
-		079C256D2963540D00DBD90D /* ForzaDashUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079C256C2963540D00DBD90D /* ForzaDashUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +40,6 @@
 		079C255C2963540D00DBD90D /* ForzaDashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ForzaDashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		079C25602963540D00DBD90D /* ForzaDashTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForzaDashTests.swift; sourceTree = "<group>"; };
 		079C25662963540D00DBD90D /* ForzaDashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ForzaDashUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		079C256A2963540D00DBD90D /* ForzaDashUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForzaDashUITests.swift; sourceTree = "<group>"; };
-		079C256C2963540D00DBD90D /* ForzaDashUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForzaDashUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +72,6 @@
 			children = (
 				079C254E2963540B00DBD90D /* ForzaDash */,
 				079C255F2963540D00DBD90D /* ForzaDashTests */,
-				079C25692963540D00DBD90D /* ForzaDashUITests */,
 				079C254D2963540B00DBD90D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -116,15 +111,6 @@
 				079C25602963540D00DBD90D /* ForzaDashTests.swift */,
 			);
 			path = ForzaDashTests;
-			sourceTree = "<group>";
-		};
-		079C25692963540D00DBD90D /* ForzaDashUITests */ = {
-			isa = PBXGroup;
-			children = (
-				079C256A2963540D00DBD90D /* ForzaDashUITests.swift */,
-				079C256C2963540D00DBD90D /* ForzaDashUITestsLaunchTests.swift */,
-			);
-			path = ForzaDashUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,8 +260,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				079C256B2963540D00DBD90D /* ForzaDashUITests.swift in Sources */,
-				079C256D2963540D00DBD90D /* ForzaDashUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
