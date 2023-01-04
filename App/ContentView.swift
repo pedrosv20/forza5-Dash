@@ -9,10 +9,12 @@ import DashRepositoryLive
 
 class ViewModel: ObservableObject {
     var cancellables: Set<AnyCancellable> = .init()
-    let forzaService: ForzaService = ForzaService.live
+    let forzaService: ForzaService
     @Published var data: ForzaModel?
     
-    init() {}
+    init(forzaService: ForzaService = .live) {
+        self.forzaService = forzaService
+    }
     
     func load() {
         forzaService
@@ -28,7 +30,7 @@ class ViewModel: ObservableObject {
 }
 
 struct ContentView: View {
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject var viewModel: ViewModel = ViewModel()
     
     var body: some View {
         ZStack {
@@ -70,13 +72,6 @@ struct ContentView: View {
         
     }
 }
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
-
 extension View {
     @ViewBuilder
     func `if`<Content: View>(_ condition: Bool, transform: ((Self) -> Content)) -> some View {
@@ -98,5 +93,12 @@ extension View {
         } else {
             elseTransform(self)
         }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(viewModel: .init(forzaService: .mock))
+            .previewInterfaceOrientation(.landscapeRight)
     }
 }
