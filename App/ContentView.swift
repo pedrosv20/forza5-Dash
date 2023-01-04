@@ -1,13 +1,10 @@
-//
-//  ContentView.swift
-//  ForzaDash
-//
-//  Created by Pedro Vargas on 02/01/23.
-//
+// TODO: - Temporary View and udpConnection calling
 
 import SwiftUI
+import NetworkProviders
 
 struct ContentView: View {
+    let udpConnection = UDPConnectionProvider()
     var body: some View {
         VStack {
             Image(systemName: "globe")

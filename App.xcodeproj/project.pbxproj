@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		079C25502963540B00DBD90D /* ForzaDashApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079C254F2963540B00DBD90D /* ForzaDashApp.swift */; };
-		079C25522963540B00DBD90D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079C25512963540B00DBD90D /* ContentView.swift */; };
-		079C25542963540D00DBD90D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 079C25532963540D00DBD90D /* Assets.xcassets */; };
-		079C25572963540D00DBD90D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 079C25562963540D00DBD90D /* Preview Assets.xcassets */; };
-		079C25612963540D00DBD90D /* ForzaDashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079C25602963540D00DBD90D /* ForzaDashTests.swift */; };
+		0749AA88296370C500BE454E /* ForzaDashApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749AA82296370C400BE454E /* ForzaDashApp.swift */; };
+		0749AA89296370C500BE454E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0749AA83296370C400BE454E /* Assets.xcassets */; };
+		0749AA8A296370C500BE454E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0749AA85296370C400BE454E /* Preview Assets.xcassets */; };
+		0749AA8B296370C500BE454E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749AA86296370C400BE454E /* ContentView.swift */; };
+		0749AA8C296370D400BE454E /* ForzaDashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749AA80296370C400BE454E /* ForzaDashTests.swift */; };
+		07BE2DE229648B5100270FF3 /* Modules in Frameworks */ = {isa = PBXBuildFile; productRef = 07BE2DE129648B5100270FF3 /* Modules */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,24 +23,17 @@
 			remoteGlobalIDString = 079C254B2963540B00DBD90D;
 			remoteInfo = ForzaDash;
 		};
-		079C25672963540D00DBD90D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 079C25442963540B00DBD90D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 079C254B2963540B00DBD90D;
-			remoteInfo = ForzaDash;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		079C254C2963540B00DBD90D /* ForzaDash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForzaDash.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		079C254F2963540B00DBD90D /* ForzaDashApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForzaDashApp.swift; sourceTree = "<group>"; };
-		079C25512963540B00DBD90D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		079C25532963540D00DBD90D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		079C25562963540D00DBD90D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		079C255C2963540D00DBD90D /* ForzaDashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ForzaDashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		079C25602963540D00DBD90D /* ForzaDashTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForzaDashTests.swift; sourceTree = "<group>"; };
-		079C25662963540D00DBD90D /* ForzaDashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ForzaDashUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0749AA80296370C400BE454E /* ForzaDashTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForzaDashTests.swift; sourceTree = "<group>"; };
+		0749AA82296370C400BE454E /* ForzaDashApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForzaDashApp.swift; sourceTree = "<group>"; };
+		0749AA83296370C400BE454E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0749AA85296370C400BE454E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0749AA86296370C400BE454E /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		079C254C2963540B00DBD90D /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		079C255C2963540D00DBD90D /* AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		07BE2DDA29647D4100270FF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07BE2DE229648B5100270FF3 /* Modules in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,68 +52,69 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		079C25632963540D00DBD90D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0749AA7F296370C400BE454E /* AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				0749AA80296370C400BE454E /* ForzaDashTests.swift */,
+			);
+			path = AppTests;
+			sourceTree = "<group>";
+		};
+		0749AA81296370C400BE454E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				07BE2DDA29647D4100270FF3 /* Info.plist */,
+				0749AA82296370C400BE454E /* ForzaDashApp.swift */,
+				0749AA83296370C400BE454E /* Assets.xcassets */,
+				0749AA84296370C400BE454E /* Preview Content */,
+				0749AA86296370C400BE454E /* ContentView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		0749AA84296370C400BE454E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0749AA85296370C400BE454E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		079C25432963540B00DBD90D = {
 			isa = PBXGroup;
 			children = (
-				079C254E2963540B00DBD90D /* ForzaDash */,
-				079C255F2963540D00DBD90D /* ForzaDashTests */,
+				0749AA81296370C400BE454E /* App */,
+				0749AA7F296370C400BE454E /* AppTests */,
 				079C254D2963540B00DBD90D /* Products */,
+				07BE2DE029648B5100270FF3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		079C254D2963540B00DBD90D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				079C254C2963540B00DBD90D /* ForzaDash.app */,
-				079C255C2963540D00DBD90D /* ForzaDashTests.xctest */,
-				079C25662963540D00DBD90D /* ForzaDashUITests.xctest */,
+				079C254C2963540B00DBD90D /* App.app */,
+				079C255C2963540D00DBD90D /* AppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		079C254E2963540B00DBD90D /* ForzaDash */ = {
+		07BE2DE029648B5100270FF3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				079C254F2963540B00DBD90D /* ForzaDashApp.swift */,
-				079C25512963540B00DBD90D /* ContentView.swift */,
-				079C25532963540D00DBD90D /* Assets.xcassets */,
-				079C25552963540D00DBD90D /* Preview Content */,
 			);
-			path = ForzaDash;
-			sourceTree = "<group>";
-		};
-		079C25552963540D00DBD90D /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				079C25562963540D00DBD90D /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		079C255F2963540D00DBD90D /* ForzaDashTests */ = {
-			isa = PBXGroup;
-			children = (
-				079C25602963540D00DBD90D /* ForzaDashTests.swift */,
-			);
-			path = ForzaDashTests;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		079C254B2963540B00DBD90D /* ForzaDash */ = {
+		079C254B2963540B00DBD90D /* App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 079C25702963540D00DBD90D /* Build configuration list for PBXNativeTarget "ForzaDash" */;
+			buildConfigurationList = 079C25702963540D00DBD90D /* Build configuration list for PBXNativeTarget "App" */;
 			buildPhases = (
 				079C25482963540B00DBD90D /* Sources */,
 				079C25492963540B00DBD90D /* Frameworks */,
@@ -128,14 +124,17 @@
 			);
 			dependencies = (
 			);
-			name = ForzaDash;
+			name = App;
+			packageProductDependencies = (
+				07BE2DE129648B5100270FF3 /* Modules */,
+			);
 			productName = ForzaDash;
-			productReference = 079C254C2963540B00DBD90D /* ForzaDash.app */;
+			productReference = 079C254C2963540B00DBD90D /* App.app */;
 			productType = "com.apple.product-type.application";
 		};
-		079C255B2963540D00DBD90D /* ForzaDashTests */ = {
+		079C255B2963540D00DBD90D /* AppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 079C25732963540D00DBD90D /* Build configuration list for PBXNativeTarget "ForzaDashTests" */;
+			buildConfigurationList = 079C25732963540D00DBD90D /* Build configuration list for PBXNativeTarget "AppTests" */;
 			buildPhases = (
 				079C25582963540D00DBD90D /* Sources */,
 				079C25592963540D00DBD90D /* Frameworks */,
@@ -146,28 +145,10 @@
 			dependencies = (
 				079C255E2963540D00DBD90D /* PBXTargetDependency */,
 			);
-			name = ForzaDashTests;
+			name = AppTests;
 			productName = ForzaDashTests;
-			productReference = 079C255C2963540D00DBD90D /* ForzaDashTests.xctest */;
+			productReference = 079C255C2963540D00DBD90D /* AppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		079C25652963540D00DBD90D /* ForzaDashUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 079C25762963540D00DBD90D /* Build configuration list for PBXNativeTarget "ForzaDashUITests" */;
-			buildPhases = (
-				079C25622963540D00DBD90D /* Sources */,
-				079C25632963540D00DBD90D /* Frameworks */,
-				079C25642963540D00DBD90D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				079C25682963540D00DBD90D /* PBXTargetDependency */,
-			);
-			name = ForzaDashUITests;
-			productName = ForzaDashUITests;
-			productReference = 079C25662963540D00DBD90D /* ForzaDashUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -186,13 +167,9 @@
 						CreatedOnToolsVersion = 14.2;
 						TestTargetID = 079C254B2963540B00DBD90D;
 					};
-					079C25652963540D00DBD90D = {
-						CreatedOnToolsVersion = 14.2;
-						TestTargetID = 079C254B2963540B00DBD90D;
-					};
 				};
 			};
-			buildConfigurationList = 079C25472963540B00DBD90D /* Build configuration list for PBXProject "ForzaDash" */;
+			buildConfigurationList = 079C25472963540B00DBD90D /* Build configuration list for PBXProject "App" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -205,9 +182,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				079C254B2963540B00DBD90D /* ForzaDash */,
-				079C255B2963540D00DBD90D /* ForzaDashTests */,
-				079C25652963540D00DBD90D /* ForzaDashUITests */,
+				079C254B2963540B00DBD90D /* App */,
+				079C255B2963540D00DBD90D /* AppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -217,19 +193,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				079C25572963540D00DBD90D /* Preview Assets.xcassets in Resources */,
-				079C25542963540D00DBD90D /* Assets.xcassets in Resources */,
+				0749AA8A296370C500BE454E /* Preview Assets.xcassets in Resources */,
+				0749AA89296370C500BE454E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		079C255A2963540D00DBD90D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		079C25642963540D00DBD90D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -243,8 +212,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				079C25522963540B00DBD90D /* ContentView.swift in Sources */,
-				079C25502963540B00DBD90D /* ForzaDashApp.swift in Sources */,
+				0749AA88296370C500BE454E /* ForzaDashApp.swift in Sources */,
+				0749AA8B296370C500BE454E /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,14 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				079C25612963540D00DBD90D /* ForzaDashTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		079C25622963540D00DBD90D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				0749AA8C296370D400BE454E /* ForzaDashTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,13 +230,8 @@
 /* Begin PBXTargetDependency section */
 		079C255E2963540D00DBD90D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 079C254B2963540B00DBD90D /* ForzaDash */;
+			target = 079C254B2963540B00DBD90D /* App */;
 			targetProxy = 079C255D2963540D00DBD90D /* PBXContainerItemProxy */;
-		};
-		079C25682963540D00DBD90D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 079C254B2963540B00DBD90D /* ForzaDash */;
-			targetProxy = 079C25672963540D00DBD90D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -329,7 +286,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -383,7 +340,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -398,17 +355,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ForzaDash/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"App/Preview Content\"";
 				DEVELOPMENT_TEAM = ZSLUMCNRNL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = App/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.racing-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -416,6 +375,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.PedroVargas.ForzaDash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -429,15 +389,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ForzaDash/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"App/Preview Content\"";
 				DEVELOPMENT_TEAM = ZSLUMCNRNL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = App/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.racing-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -467,7 +428,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ForzaDash.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ForzaDash";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/App";
 			};
 			name = Debug;
 		};
@@ -487,50 +448,14 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ForzaDash.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ForzaDash";
-			};
-			name = Release;
-		};
-		079C25772963540D00DBD90D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZSLUMCNRNL;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.PedroVargas.ForzaDashUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ForzaDash;
-			};
-			name = Debug;
-		};
-		079C25782963540D00DBD90D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZSLUMCNRNL;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.PedroVargas.ForzaDashUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ForzaDash;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/App";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		079C25472963540B00DBD90D /* Build configuration list for PBXProject "ForzaDash" */ = {
+		079C25472963540B00DBD90D /* Build configuration list for PBXProject "App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				079C256E2963540D00DBD90D /* Debug */,
@@ -539,7 +464,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		079C25702963540D00DBD90D /* Build configuration list for PBXNativeTarget "ForzaDash" */ = {
+		079C25702963540D00DBD90D /* Build configuration list for PBXNativeTarget "App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				079C25712963540D00DBD90D /* Debug */,
@@ -548,7 +473,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		079C25732963540D00DBD90D /* Build configuration list for PBXNativeTarget "ForzaDashTests" */ = {
+		079C25732963540D00DBD90D /* Build configuration list for PBXNativeTarget "AppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				079C25742963540D00DBD90D /* Debug */,
@@ -557,16 +482,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		079C25762963540D00DBD90D /* Build configuration list for PBXNativeTarget "ForzaDashUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				079C25772963540D00DBD90D /* Debug */,
-				079C25782963540D00DBD90D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		07BE2DE129648B5100270FF3 /* Modules */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Modules;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 079C25442963540B00DBD90D /* Project object */;
 }
