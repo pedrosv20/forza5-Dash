@@ -31,23 +31,72 @@ struct ContentView: View {
     @ObservedObject var viewModel = ViewModel()
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-//                .foregroundColor(gameIsRunning ? .green : .red)
-//                .animation(.default, value: gameIsRunning)
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("speed: \(viewModel.data?.speed ??  -59)")
-                .onAppear {
-                    viewModel.load()
+        ZStack {
+            Group {
+                Color.blue
+                Color.black.opacity(0.7)
+            }
+            .edgesIgnoringSafeArea(.all)
+            
+            Group {
+                VStack {
+                    HStack {
+                        Image(systemName:"flag.checkered.circle")
+                            .symbolRenderingMode(.palette)
+                            .if(
+                                viewModel.data?.gameIsRunning ?? false,
+                                transform: {
+                                    $0.foregroundStyle(.white, .green)
+                                },
+                                elseTransform: { $0.foregroundColor(.red)
+                                }
+                            )
+                                .font(.init(.system(size: 35)))
+                                .imageScale(.large)
+                                Spacer()
+                    }
+                    Spacer()
                 }
+
+                Text("\(viewModel.data?.speed ??  0) KM/h")
+                    .foregroundColor(.white)
+                    .font(.init(.system(size: 50)))
+                    .onAppear {
+                        viewModel.load()
+                    }
+            }
         }
-        .padding()
+        
+        
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+extension View {
+    @ViewBuilder
+    func `if`<Content: View>(_ condition: Bool, transform: ((Self) -> Content)) -> some View {
+        if condition {
+            transform(self)
+        } else {
+            self
+        }
+    }
+    
+    @ViewBuilder
+    func `if`<IFContent: View, ElseContent: View>(
+        _ condition: Bool,
+        transform: ((Self) -> IFContent),
+        elseTransform: ((Self) -> ElseContent)
+    ) -> some View {
+        if condition {
+            transform(self)
+        } else {
+            elseTransform(self)
+        }
     }
 }

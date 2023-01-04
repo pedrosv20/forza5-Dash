@@ -1,7 +1,7 @@
 import Foundation
 
-struct ForzaResponseMapper {
-    static func map(data: Data) -> ForzaResponse {
+struct ForzaDTOMapper {
+    static func map(data: Data) -> ForzaDTO {
         let boost: Float = {
             let boostValue: Float = data[284..<288].floatValue()
             let normalizedBoost = boostValue / 14.5065759358
