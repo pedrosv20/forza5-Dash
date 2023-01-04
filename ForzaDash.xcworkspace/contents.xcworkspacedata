@@ -5,6 +5,6 @@
       location = "group:../../../.Trash/Modules">
    </FileRef>
    <FileRef
-      location = "group:ForzaDash.xcodeproj">
+      location = "group:App.xcodeproj">
    </FileRef>
 </Workspace>
