@@ -23,6 +23,7 @@ class ViewModel: ObservableObject {
                 receiveCompletion: { _ in },
                 receiveValue: { response in
                     self.data = response
+                    print(response.maxRPM, response.currentEngineRPM)
                 }
             )
             .store(in: &cancellables)
@@ -37,24 +38,32 @@ struct ContentView: View {
             Color.black
                 .edgesIgnoringSafeArea(.all)
             
-            VStack(alignment: .center, spacing: 16) {
+        
+            VStack(alignment: .center, spacing: 12) {
                 rpmProgressView
                     .padding(.top, 6)
+//                    .padding(.bottom, 16)
+                Spacer()
                 HStack(spacing: 16) {
                     VStack(spacing: 16) {
                         rpmView
                         speedView
                     }
                     Spacer()
+
                     gearView
+
                     Spacer()
+
                     VStack(spacing: 16) {
                         isRaceOnView
                         boostView
                     }
-//                    boostView
                 }
+                
+//                Spacer()
             }
+            
         }
         .onAppear {
             viewModel.load()
@@ -64,20 +73,31 @@ struct ContentView: View {
     }
     
     var rpmProgressView: some View {
-        ProgressView(
-            value: viewModel.data?.currentEngineRPM ?? 0,
-            total: viewModel.data?.maxRPM ?? 0
-        )
-        .progressViewStyle(RPMProgressViewStyle())
+            ProgressView(
+                value: viewModel.data?.currentEngineRPM ?? 0,
+                total: (viewModel.data?.maxRPM ?? 0 * 0.95)
+            )
+            .frame(height: 60)
+            .progressViewStyle(RPMProgressViewStyle())
     }
 
     var isRaceOnView: some View {
         Rectangle()
             .stroke(lineWidth: 3)
-            .frame(width: 200, height: 100)
             .foregroundColor(.white)
+            .overlay(alignment: .top) {
+                Text("R A C E  O N")
+                    .font(.title3)
+                    .padding(.horizontal, 8)
+                    .foregroundColor(.white)
+                    .background(.black)
+                    .offset(y: -10)
+            }
             .overlay(
                 Image(systemName:"flag.checkered.circle")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .scaleEffect(0.8)
                     .symbolRenderingMode(.palette)
                     .if(
                         viewModel.data?.gameIsRunning ?? false,
@@ -87,31 +107,24 @@ struct ContentView: View {
                         elseTransform: { $0.foregroundColor(.red)
                         }
                     )
-                        .font(.init(.system(size: 35)))
-                        .imageScale(.large)
             )
-            .overlay(alignment: .top) {
-                Text("RACING ON")
-                    .padding(.horizontal, 8)
-                    .foregroundColor(.white)
-                    .background(.black)
-                    .offset(y: -10)
-            }
+            
         
     }
     
     var gearView: some View {
         Rectangle()
             .stroke(lineWidth: 3)
-            .frame(width: 150, height: 260)
+//            .frame(width: 200, height: 260)
             .foregroundColor(.white)
             .overlay(
                 Text(String(viewModel.data?.gear ?? 0))
                     .foregroundColor(.white)
-                    .font(.init(.system(size: 85)))
+                    .font(.init(.system(size: 100)))
             )
             .overlay(alignment: .top) {
                 Text("G E A R")
+                    .font(.title3)
                     .padding(.horizontal, 8)
                     .foregroundColor(.white)
                     .background(.black)
@@ -122,7 +135,7 @@ struct ContentView: View {
     var rpmView: some View {
         Rectangle()
             .stroke(lineWidth: 3)
-            .frame(width: 200, height: 100)
+//            .frame(width: 200, height: 100)
             .foregroundColor(.white)
             .overlay(
                 Text(String(Int(viewModel.data?.currentEngineRPM ?? 00)))
@@ -131,6 +144,7 @@ struct ContentView: View {
             )
             .overlay(alignment: .top) {
                 Text("R P M")
+                    .font(.title3)
                     .padding(.horizontal, 8)
                     .foregroundColor(.white)
                     .background(.black)
@@ -140,25 +154,20 @@ struct ContentView: View {
     
     var speedView: some View {
         Rectangle()
-            .stroke(lineWidth: 3)
+            .strokeBorder(.white, lineWidth: 3)
             .if(
                 viewModel.data?.speed ?? 0 > 0,
                 transform: {
                     $0.background(
-                        Color.green.opacity(0.7)
-                            .frame(width: 200, height: 150)
+                        Rectangle().fill(.green)
                     )
                 },
                 elseTransform: {
                     $0.background(
-                        Color.black
-                            .frame(width: 200, height: 150)
+                        Rectangle().fill(.black)
                     )
                 }
             )
-            .frame(width: 200, height: 150)
-            
-            .foregroundColor(.white)
             .overlay(
                 Text(String(viewModel.data?.speed ??  0))
                 .foregroundColor(.white)
@@ -169,6 +178,7 @@ struct ContentView: View {
                     .padding(.horizontal, 8)
                     .foregroundColor(.white)
                     .background(.black)
+                    .font(.title3)
                     .offset(y: -10)
             }
         
@@ -177,7 +187,7 @@ struct ContentView: View {
     var boostView: some View {
         Rectangle()
             .stroke(lineWidth: 3)
-            .frame(width: 200, height: 150)
+//            .frame(width: 200, height: 150)
             .foregroundColor(.white)
             .overlay(
                 Text(String(viewModel.data?.boost ??  0))
@@ -186,6 +196,7 @@ struct ContentView: View {
             )
             .overlay(alignment: .top) {
                 Text("P S I")
+                    .font(.title3)
                     .padding(.horizontal, 8)
                     .foregroundColor(.white)
                     .background(.black)
@@ -237,6 +248,13 @@ struct RPMProgressViewStyle: ProgressViewStyle {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(viewModel: .init(forzaService: .mock))
+            .previewDevice("iPad Pro (12.9-inch) (6th generation)")
+            .previewDisplayName("ipad")
             .previewInterfaceOrientation(.landscapeRight)
+//
+//        ContentView(viewModel: .init(forzaService: .mock))
+//            .previewDevice("iPhone 14 Pro Max")
+//            .previewDisplayName("iphone")
+//            .previewInterfaceOrientation(.landscapeRight)
     }
 }
