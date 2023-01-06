@@ -21,24 +21,24 @@ public struct ForzaModel {
     public let numOfCylinders: Int
     
     public init(
-        gameIsRunning: Bool,
-        maxRPM: Float,
-        idleRPM: Float,
-        currentEngineRPM: Float,
-        accel: Float,
-        brake: Float,
-        clutch: Float,
-        handbrake: Float,
-        gear: Int,
-        boost: Float,
-        speed: Int,
-        horsePower: Float,
-        torque: Float,
-        carOrdinal: Int,
-        carClass: Int,
-        carPerformanceIndex: Int,
-        driveTrainType: Int,
-        numOfCylinders: Int
+        gameIsRunning: Bool = false,
+        maxRPM: Float = 0,
+        idleRPM: Float = 0,
+        currentEngineRPM: Float = 0,
+        accel: Float = 0,
+        brake: Float = 0,
+        clutch: Float = 0,
+        handbrake: Float = 0,
+        gear: Int = 11,
+        boost: Float = 0,
+        speed: Int = 0,
+        horsePower: Float = 0,
+        torque: Float = 0,
+        carOrdinal: Int = 0,
+        carClass: Int = 0,
+        carPerformanceIndex: Int = 0,
+        driveTrainType: Int = 0,
+        numOfCylinders: Int = 0
     ) {
         self.gameIsRunning = gameIsRunning
         self.maxRPM = maxRPM

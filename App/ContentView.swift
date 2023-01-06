@@ -10,7 +10,7 @@ import DashRepositoryLive
 class ViewModel: ObservableObject {
     var cancellables: Set<AnyCancellable> = .init()
     let forzaService: ForzaService
-    @Published var data: ForzaModel?
+    @Published var data: ForzaModel = .init()
     
     init(forzaService: ForzaService = .live) {
         self.forzaService = forzaService
@@ -23,7 +23,6 @@ class ViewModel: ObservableObject {
                 receiveCompletion: { _ in },
                 receiveValue: { response in
                     self.data = response
-                    print(response.maxRPM, response.currentEngineRPM)
                 }
             )
             .store(in: &cancellables)
@@ -42,7 +41,6 @@ struct ContentView: View {
             VStack(alignment: .center, spacing: 12) {
                 rpmProgressView
                     .padding(.top, 6)
-//                    .padding(.bottom, 16)
                 Spacer()
                 HStack(spacing: 16) {
                     VStack(spacing: 16) {
@@ -60,8 +58,6 @@ struct ContentView: View {
                         boostView
                     }
                 }
-                
-//                Spacer()
             }
             
         }
@@ -74,8 +70,8 @@ struct ContentView: View {
     
     var rpmProgressView: some View {
             ProgressView(
-                value: viewModel.data?.currentEngineRPM ?? 0,
-                total: (viewModel.data?.maxRPM ?? 0 * 0.95)
+                value: viewModel.data.currentEngineRPM,
+                total: viewModel.data.maxRPM
             )
             .frame(height: 60)
             .progressViewStyle(RPMProgressViewStyle())
@@ -100,7 +96,7 @@ struct ContentView: View {
                     .scaleEffect(0.8)
                     .symbolRenderingMode(.palette)
                     .if(
-                        viewModel.data?.gameIsRunning ?? false,
+                        viewModel.data.gameIsRunning,
                         transform: {
                             $0.foregroundStyle(.white, .green)
                         },
@@ -115,12 +111,11 @@ struct ContentView: View {
     var gearView: some View {
         Rectangle()
             .stroke(lineWidth: 3)
-//            .frame(width: 200, height: 260)
             .foregroundColor(.white)
             .overlay(
-                Text(String(viewModel.data?.gear ?? 0))
-                    .foregroundColor(.white)
-                    .font(.init(.system(size: 100)))
+                Text(viewModel.data.gear == 0 ? "R" : viewModel.data.gear == 11 ? "N" : String(viewModel.data.gear))
+                        .foregroundColor(.white)
+                        .font(.init(.system(size: 100)))
             )
             .overlay(alignment: .top) {
                 Text("G E A R")
@@ -138,7 +133,7 @@ struct ContentView: View {
 //            .frame(width: 200, height: 100)
             .foregroundColor(.white)
             .overlay(
-                Text(String(Int(viewModel.data?.currentEngineRPM ?? 00)))
+                Text(String(Int(viewModel.data.currentEngineRPM)))
                     .foregroundColor(.white)
                     .font(.init(.system(size: 40)))
             )
@@ -156,7 +151,7 @@ struct ContentView: View {
         Rectangle()
             .strokeBorder(.white, lineWidth: 3)
             .if(
-                viewModel.data?.speed ?? 0 > 0,
+                viewModel.data.accel != 0,
                 transform: {
                     $0.background(
                         Rectangle().fill(.green)
@@ -169,7 +164,7 @@ struct ContentView: View {
                 }
             )
             .overlay(
-                Text(String(viewModel.data?.speed ??  0))
+                Text(String(viewModel.data.speed))
                 .foregroundColor(.white)
                 .font(.init(.system(size: 60)))
             )
@@ -190,7 +185,7 @@ struct ContentView: View {
 //            .frame(width: 200, height: 150)
             .foregroundColor(.white)
             .overlay(
-                Text(String(viewModel.data?.boost ??  0))
+                Text(String(viewModel.data.boost))
                 .foregroundColor(.white)
                 .font(.init(.system(size: 60)))
             )
