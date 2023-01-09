@@ -18,7 +18,8 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/robbiehanson/CocoaAsyncSocket", from: "7.6.4")
+        .package(url: "https://github.com/robbiehanson/CocoaAsyncSocket", branch: "master"),
+        .package(url: "https://github.com/pointfreeco/swift-composable-architecture", branch: "main")
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
     ],
