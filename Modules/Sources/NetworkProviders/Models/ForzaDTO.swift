@@ -18,7 +18,8 @@ public struct ForzaDTO {
     public let carClass: Int
     public let carPerformanceIndex: Int
     public let driveTrainType: Int
-    public let numOfCylinders: Int    
+    public let numOfCylinders: Int
+    public let distanceTraveled: Float
 }
 
 #if DEBUG
@@ -41,7 +42,8 @@ public extension ForzaDTO {
         carClass: Int = 3,
         carPerformanceIndex: Int = 700,
         driveTrainType: Int = 2,
-        numOfCylinders: Int = 6
+        numOfCylinders: Int = 6,
+        distanceTraveled: Float = 0
     ) -> Self {
         self.init(
             gameIsRunning: gameIsRunning,
@@ -61,7 +63,8 @@ public extension ForzaDTO {
             carClass: carClass,
             carPerformanceIndex: carPerformanceIndex,
             driveTrainType: driveTrainType,
-            numOfCylinders: numOfCylinders
+            numOfCylinders: numOfCylinders,
+            distanceTraveled: distanceTraveled
         )
         
     }
