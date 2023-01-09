@@ -37,20 +37,21 @@ public extension ForzaService {
     }
 }
 
-#if DEBUG
-public extension ForzaService {
-    static var counter = -1
-    static let mock: Self = .init {
-        Timer.publish(every: 0.1, on: .main, in: .default).autoconnect()
-            .map { _ in
-                if counter == 100 {
-                    counter = -1
-                }
-                counter += 1
-                return ForzaModel.fixture(gameIsRunning: true, speed: counter)
-            }
-            .setFailureType(to: Error.self)
-            .eraseToAnyPublisher()
-    }
-}
-#endif
+//#if DEBUG
+//public extension ForzaService {
+//    static var counter = -1
+//    static let mock: Self = .init {
+//        Timer.publish(every: 0.1, on: .main, in: .default).autoconnect()
+//            .map { _ in
+//                if counter == 100 {
+//                    counter = -1
+//                }
+//                counter += 1
+//                return ForzaModel.fixture(gameIsRunning: true, speed: counter)
+//            }
+//            .setFailureType(to: Error.self)
+//            .eraseToAnyPublisher()
+//            .asyn
+//    }
+//}
+//#endif

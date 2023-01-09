@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		070479AD296C6385008E1ADE /* DashFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 070479AC296C6385008E1ADE /* DashFeature */; };
+		070479AF296C6385008E1ADE /* DashRepository in Frameworks */ = {isa = PBXBuildFile; productRef = 070479AE296C6385008E1ADE /* DashRepository */; };
+		070479B1296C6385008E1ADE /* DashRepositoryLive in Frameworks */ = {isa = PBXBuildFile; productRef = 070479B0296C6385008E1ADE /* DashRepositoryLive */; };
+		070479B3296C6385008E1ADE /* NetworkProviders in Frameworks */ = {isa = PBXBuildFile; productRef = 070479B2296C6385008E1ADE /* NetworkProviders */; };
 		0749AA88296370C500BE454E /* ForzaDashApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749AA82296370C400BE454E /* ForzaDashApp.swift */; };
 		0749AA89296370C500BE454E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0749AA83296370C400BE454E /* Assets.xcassets */; };
 		0749AA8A296370C500BE454E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0749AA85296370C400BE454E /* Preview Assets.xcassets */; };
-		0749AA8B296370C500BE454E /* DashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749AA86296370C400BE454E /* DashView.swift */; };
 		0749AA8C296370D400BE454E /* ForzaDashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749AA80296370C400BE454E /* ForzaDashTests.swift */; };
+		075ECC8B296C741600C5FDB5 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075ECC8A296C741600C5FDB5 /* RootView.swift */; };
 		07768AC52968ECBE008421CF /* DragyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07768AC42968ECBE008421CF /* DragyView.swift */; };
-		07BE2DE229648B5100270FF3 /* Modules in Frameworks */ = {isa = PBXBuildFile; productRef = 07BE2DE129648B5100270FF3 /* Modules */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +34,7 @@
 		0749AA82296370C400BE454E /* ForzaDashApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForzaDashApp.swift; sourceTree = "<group>"; };
 		0749AA83296370C400BE454E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0749AA85296370C400BE454E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		0749AA86296370C400BE454E /* DashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashView.swift; sourceTree = "<group>"; };
+		075ECC8A296C741600C5FDB5 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		07768AC42968ECBE008421CF /* DragyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragyView.swift; sourceTree = "<group>"; };
 		079C254C2963540B00DBD90D /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		079C255C2963540D00DBD90D /* AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,7 +46,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07BE2DE229648B5100270FF3 /* Modules in Frameworks */,
+				070479B3296C6385008E1ADE /* NetworkProviders in Frameworks */,
+				070479B1296C6385008E1ADE /* DashRepositoryLive in Frameworks */,
+				070479AF296C6385008E1ADE /* DashRepository in Frameworks */,
+				070479AD296C6385008E1ADE /* DashFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,8 +78,8 @@
 				0749AA82296370C400BE454E /* ForzaDashApp.swift */,
 				0749AA83296370C400BE454E /* Assets.xcassets */,
 				0749AA84296370C400BE454E /* Preview Content */,
-				0749AA86296370C400BE454E /* DashView.swift */,
 				07768AC42968ECBE008421CF /* DragyView.swift */,
+				075ECC8A296C741600C5FDB5 /* RootView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -129,7 +135,10 @@
 			);
 			name = App;
 			packageProductDependencies = (
-				07BE2DE129648B5100270FF3 /* Modules */,
+				070479AC296C6385008E1ADE /* DashFeature */,
+				070479AE296C6385008E1ADE /* DashRepository */,
+				070479B0296C6385008E1ADE /* DashRepositoryLive */,
+				070479B2296C6385008E1ADE /* NetworkProviders */,
 			);
 			productName = ForzaDash;
 			productReference = 079C254C2963540B00DBD90D /* App.app */;
@@ -215,9 +224,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				075ECC8B296C741600C5FDB5 /* RootView.swift in Sources */,
 				07768AC52968ECBE008421CF /* DragyView.swift in Sources */,
 				0749AA88296370C500BE454E /* ForzaDashApp.swift in Sources */,
-				0749AA8B296370C500BE454E /* DashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,9 +502,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		07BE2DE129648B5100270FF3 /* Modules */ = {
+		070479AC296C6385008E1ADE /* DashFeature */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Modules;
+			productName = DashFeature;
+		};
+		070479AE296C6385008E1ADE /* DashRepository */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DashRepository;
+		};
+		070479B0296C6385008E1ADE /* DashRepositoryLive */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DashRepositoryLive;
+		};
+		070479B2296C6385008E1ADE /* NetworkProviders */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NetworkProviders;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

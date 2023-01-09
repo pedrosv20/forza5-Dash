@@ -12,7 +12,7 @@ struct ForzaDTOMapper {
 
         let boost: Float = {
             let boostValue: Float = data[284..<288].floatValue()
-            if carOrdinal != currentCar, carOrdinal != 0, boostValue > -14 {
+            if carOrdinal != currentCar, carOrdinal != 0, boostValue > -14, boostValue != 0.0 {
                 hasTurbo = true
             } else if carOrdinal != currentCar, carOrdinal != 0, boostValue < -14 {
                 hasTurbo = false
