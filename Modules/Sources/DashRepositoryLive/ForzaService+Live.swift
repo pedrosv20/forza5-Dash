@@ -7,7 +7,7 @@ public extension ForzaService {
     static let live: Self = .init {
         UDPConnectionProvider
             .shared
-            .publisher
+            .getTelemetryData()
             .map { response in
                 ForzaModel(
                     gameIsRunning: response.gameIsRunning,

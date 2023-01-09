@@ -16,7 +16,7 @@ public final class UDPConnectionProvider: NSObject, GCDAsyncUdpSocketDelegate {
     
     let port: UInt16 = 5000
     var socket: GCDAsyncUdpSocket?
-    public let publisher: PassthroughSubject<ForzaDTO, CommonError> = .init()
+    let publisher: PassthroughSubject<ForzaDTO, CommonError> = .init()
     
     private override init() {
         super.init()
@@ -41,6 +41,11 @@ public final class UDPConnectionProvider: NSObject, GCDAsyncUdpSocketDelegate {
     public func udpSocket(_ sock: GCDAsyncUdpSocket, didReceive data: Data, fromAddress address: Data, withFilterContext filterContext: Any?) {
         publisher.send(ForzaDTOMapper.map(data: data))
     }
+    
+    public func getTelemetryData() -> AnyPublisher<ForzaDTO, CommonError> {
+        publisher.eraseToAnyPublisher()
+    }
+    
     
     deinit {
         socket?.close()

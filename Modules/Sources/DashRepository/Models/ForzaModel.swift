@@ -1,6 +1,6 @@
 import Foundation
 
-public struct ForzaModel {
+public struct ForzaModel: Equatable {
     public let gameIsRunning: Bool
     public let maxRPM: Float
     public let idleRPM: Float

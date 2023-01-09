@@ -41,16 +41,16 @@ import CocoaAsyncSocket
 import NetworkProviders
 import DashRepository
 import DashRepositoryLive
-
+//
 class DashViewModel: ObservableObject {
     var cancellables: Set<AnyCancellable> = .init()
     let forzaService: ForzaService
     @Published var data: ForzaModel = .init()
-    
+
     init(forzaService: ForzaService = .live) {
         self.forzaService = forzaService
     }
-    
+
     func load() {
         forzaService
             .getForzaInfo()
