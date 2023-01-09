@@ -8,7 +8,7 @@ public enum CommonError: Error {
 }
 public final class UDPConnectionProvider: NSObject, GCDAsyncUdpSocketDelegate {
     #if targetEnvironment(simulator)
-    let ip: String = "192.168.0.28"
+    let ip: String = "192.168.0.23"
     #else
     let ip: String = "192.168.0.34"  // TODO: - Get ip from device that is running the app
     #endif

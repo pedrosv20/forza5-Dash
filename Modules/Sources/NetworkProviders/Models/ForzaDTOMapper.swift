@@ -1,13 +1,30 @@
 import Foundation
 
 struct ForzaDTOMapper {
+    static var currentCar: Int = 0
+    static var hasTurbo = true
     static func map(data: Data) -> ForzaDTO {
+        
+        let carOrdinal: Int = {
+            let car = data[212..<216].intValue()
+            return car
+        }()
+
         let boost: Float = {
             let boostValue: Float = data[284..<288].floatValue()
+            if carOrdinal != currentCar, carOrdinal != 0, boostValue > -14 {
+                hasTurbo = true
+            } else if carOrdinal != currentCar, carOrdinal != 0, boostValue < -14 {
+                hasTurbo = false
+            }
             let normalizedBoost = boostValue / 14.5065759358
             let roundedData: Float = round(normalizedBoost * 100) / 100
-            return roundedData
+            return hasTurbo ? roundedData : 0
         }()
+        
+        if currentCar != carOrdinal, carOrdinal != 0 {
+            currentCar = carOrdinal
+        }
         
         let speed: Int = {
             let speedValue: Float = data[256..<260].floatValue()
@@ -34,16 +51,16 @@ struct ForzaDTOMapper {
             maxRPM: data[8..<12].floatValue(),
             idleRPM: data[12..<16].floatValue(),
             currentEngineRPM: data[16..<20].floatValue(),
-            accel: Float(data[304]),
-            brake: Float(data[305]),
-            clutch: Float(data[306]),
-            handbrake: Float(data[307]),
-            gear: Int(data[308]),
+            accel: Float(data[315]),
+            brake: Float(data[316]),
+            clutch: Float(data[317]),
+            handbrake: Float(data[318]),
+            gear: Int(data[319]),
             boost: boost,
             speed: speed,
             horsePower: horsePower,
             torque: torque,
-            carOrdinal: data[212..<216].intValue(),
+            carOrdinal: currentCar,
             carClass: data[216..<220].intValue(),
             carPerformanceIndex: data[220..<224].intValue(),
             driveTrainType: data[224..<228].intValue(),
