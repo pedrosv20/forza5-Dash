@@ -19,6 +19,7 @@ public struct ForzaModel {
     public let carPerformanceIndex: Int
     public let driveTrainType: Int
     public let numOfCylinders: Int
+    public let distanceTraveled: Float
     
     public init(
         gameIsRunning: Bool = false,
@@ -38,7 +39,8 @@ public struct ForzaModel {
         carClass: Int = 0,
         carPerformanceIndex: Int = 0,
         driveTrainType: Int = 0,
-        numOfCylinders: Int = 0
+        numOfCylinders: Int = 0,
+        distanceTraveled: Float = 0
     ) {
         self.gameIsRunning = gameIsRunning
         self.maxRPM = maxRPM
@@ -58,6 +60,7 @@ public struct ForzaModel {
         self.carPerformanceIndex = carPerformanceIndex
         self.driveTrainType = driveTrainType
         self.numOfCylinders = numOfCylinders
+        self.distanceTraveled = distanceTraveled
     }
 }
 

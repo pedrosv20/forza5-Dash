@@ -10,8 +10,9 @@
 		0749AA88296370C500BE454E /* ForzaDashApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749AA82296370C400BE454E /* ForzaDashApp.swift */; };
 		0749AA89296370C500BE454E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0749AA83296370C400BE454E /* Assets.xcassets */; };
 		0749AA8A296370C500BE454E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0749AA85296370C400BE454E /* Preview Assets.xcassets */; };
-		0749AA8B296370C500BE454E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749AA86296370C400BE454E /* ContentView.swift */; };
+		0749AA8B296370C500BE454E /* DashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749AA86296370C400BE454E /* DashView.swift */; };
 		0749AA8C296370D400BE454E /* ForzaDashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749AA80296370C400BE454E /* ForzaDashTests.swift */; };
+		07768AC52968ECBE008421CF /* DragyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07768AC42968ECBE008421CF /* DragyView.swift */; };
 		07BE2DE229648B5100270FF3 /* Modules in Frameworks */ = {isa = PBXBuildFile; productRef = 07BE2DE129648B5100270FF3 /* Modules */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +31,8 @@
 		0749AA82296370C400BE454E /* ForzaDashApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForzaDashApp.swift; sourceTree = "<group>"; };
 		0749AA83296370C400BE454E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0749AA85296370C400BE454E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		0749AA86296370C400BE454E /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0749AA86296370C400BE454E /* DashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashView.swift; sourceTree = "<group>"; };
+		07768AC42968ECBE008421CF /* DragyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragyView.swift; sourceTree = "<group>"; };
 		079C254C2963540B00DBD90D /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		079C255C2963540D00DBD90D /* AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		07BE2DDA29647D4100270FF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -70,7 +72,8 @@
 				0749AA82296370C400BE454E /* ForzaDashApp.swift */,
 				0749AA83296370C400BE454E /* Assets.xcassets */,
 				0749AA84296370C400BE454E /* Preview Content */,
-				0749AA86296370C400BE454E /* ContentView.swift */,
+				0749AA86296370C400BE454E /* DashView.swift */,
+				07768AC42968ECBE008421CF /* DragyView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -212,8 +215,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07768AC52968ECBE008421CF /* DragyView.swift in Sources */,
 				0749AA88296370C500BE454E /* ForzaDashApp.swift in Sources */,
-				0749AA8B296370C500BE454E /* ContentView.swift in Sources */,
+				0749AA8B296370C500BE454E /* DashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

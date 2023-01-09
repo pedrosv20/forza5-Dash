@@ -45,6 +45,12 @@ struct ForzaDTOMapper {
             let roundedTorque = round(normalizedTorque * 100) / 100
             return roundedTorque > 0 ? roundedTorque : 0
         }()
+        
+        let distanceTraveled: Float = {
+            let distanceTraveledValue: Float = data[292..<296].floatValue()
+            let normalizedDistanceTraveled = distanceTraveledValue * 1.609344
+            return normalizedDistanceTraveled
+        }()
 
         return .init(
             gameIsRunning: data[0] == 1,
@@ -64,7 +70,8 @@ struct ForzaDTOMapper {
             carClass: data[216..<220].intValue(),
             carPerformanceIndex: data[220..<224].intValue(),
             driveTrainType: data[224..<228].intValue(),
-            numOfCylinders: data[228..<232].intValue()
+            numOfCylinders: data[228..<232].intValue(),
+            distanceTraveled: distanceTraveled
         )
         
         

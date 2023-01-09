@@ -11,7 +11,7 @@ import SwiftUI
 struct ForzaDashApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DragyView()
         }
     }
 }

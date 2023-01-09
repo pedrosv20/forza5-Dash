@@ -7,7 +7,7 @@ import NetworkProviders
 import DashRepository
 import DashRepositoryLive
 
-class ViewModel: ObservableObject {
+class DashViewModel: ObservableObject {
     var cancellables: Set<AnyCancellable> = .init()
     let forzaService: ForzaService
     @Published var data: ForzaModel = .init()
@@ -29,8 +29,8 @@ class ViewModel: ObservableObject {
     }
 }
 
-struct ContentView: View {
-    @ObservedObject var viewModel: ViewModel = ViewModel()
+struct DashView: View {
+    @ObservedObject var viewModel: DashViewModel = DashViewModel()
     
     var body: some View {
         ZStack {
@@ -130,7 +130,6 @@ struct ContentView: View {
     var rpmView: some View {
         Rectangle()
             .stroke(lineWidth: 3)
-//            .frame(width: 200, height: 100)
             .foregroundColor(.white)
             .overlay(
                 Text(String(Int(viewModel.data.currentEngineRPM)))
@@ -182,7 +181,6 @@ struct ContentView: View {
     var boostView: some View {
         Rectangle()
             .stroke(lineWidth: 3)
-//            .frame(width: 200, height: 150)
             .foregroundColor(.white)
             .overlay(
                 Text(String(viewModel.data.boost))
@@ -240,9 +238,9 @@ struct RPMProgressViewStyle: ProgressViewStyle {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct DashView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(viewModel: .init(forzaService: .mock))
+        DashView(viewModel: .init(forzaService: .mock))
             .previewDevice("iPad Pro (12.9-inch) (6th generation)")
             .previewDisplayName("ipad")
             .previewInterfaceOrientation(.landscapeRight)
