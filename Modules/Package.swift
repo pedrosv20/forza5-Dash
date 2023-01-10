@@ -43,7 +43,9 @@ let package = Package(
             name: "DashFeature",
             dependencies: [
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-                .product(name: "CocoaAsyncSocket", package: "CocoaAsyncSocket")
+                .product(name: "CocoaAsyncSocket", package: "CocoaAsyncSocket"),
+                "DashRepositoryLive",
+                "DashRepository"
             ]
         ),
 

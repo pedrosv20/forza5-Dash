@@ -46,7 +46,6 @@ public final class UDPConnectionProvider: NSObject, GCDAsyncUdpSocketDelegate {
         publisher.eraseToAnyPublisher()
     }
     
-    
     deinit {
         socket?.close()
     }

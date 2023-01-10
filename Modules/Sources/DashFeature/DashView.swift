@@ -1,238 +1,245 @@
-//import SwiftUI
-//import Combine
-//import ComposableArchitecture
-//import DashRepository
-//import DashRepositoryLive
-//
-//struct Dash: ReducerProtocol {
-//    struct State: Equatable {
-//        var model: ForzaModel
-//    }
-//
-//    enum Action: Equatable {
-//        case onAppear
-//        case requestData
-//        case handleRequestedData<Response<ForzaModel, Error>>
-//    }
-//
-//    @Dependency(\.forzaService) var forzaService
-//
-//    public init() {}
-//
-//    public var body: some ReducerProtocol<State, Action> {
-//        Reduce { state, action in
-//            switch action {
-//            case .onAppear:
-//                forzaService.getForzaInfo
-//            }
-//        }
-//    }
-//
-//
-//
-//
-//}
-
-// TODO: - Temporary View and udpConnection calling
-
 import SwiftUI
 import Combine
-import CocoaAsyncSocket
-import NetworkProviders
+import ComposableArchitecture
 import DashRepository
-import DashRepositoryLive
-//
-class DashViewModel: ObservableObject {
-    var cancellables: Set<AnyCancellable> = .init()
-    let forzaService: ForzaService
-    @Published var data: ForzaModel = .init()
 
-    init(forzaService: ForzaService = .live) {
-        self.forzaService = forzaService
+public enum CommonError: Error {
+    case couldNotConnectToIP
+}
+
+public struct Dash: ReducerProtocol {
+    public struct State: Equatable {
+        public var model: ForzaModel
+        
+        public init(model: ForzaModel) {
+            self.model = model
+        }
     }
 
-    func load() {
-        forzaService
-            .getForzaInfo()
-            .sink(
-                receiveCompletion: { _ in },
-                receiveValue: { response in
-                    self.data = response
-                }
-            )
-            .store(in: &cancellables)
+    public enum Action {
+        case onAppear
+        case requestData
+        case handleRequestedData(Result<ForzaModel, Error>)
+    }
+    let mainQueue: DispatchQueue = .main
+    @Dependency(\.forzaService) var forzaService
+
+    public init() {}
+
+    public var body: some ReducerProtocol<State, Action> {
+        Reduce { state, action in
+            switch action {
+            case .onAppear:
+                return .init(value: .requestData)
+
+            case .requestData:
+                return forzaService
+                    .getForzaInfo()
+                    .receive(on: DispatchQueue.main)
+                    .catchToEffect()
+                    .map(Action.handleRequestedData)
+
+
+            case let .handleRequestedData(.success(model)):
+                state.model = model
+                return .none
+
+            case .handleRequestedData(.failure(_)):
+                return .none
+            }
+        }
     }
 }
 
+
 public struct DashView: View {
-    @ObservedObject var viewModel: DashViewModel = DashViewModel()
+    var store: StoreOf<Dash>
     
-    public init() {}
+    public init(store: StoreOf<Dash>) {
+        self.store = store
+    }
     
     public var body: some View {
-        ZStack {
-            Color.black
-                .edgesIgnoringSafeArea(.all)
+        WithViewStore(store) { viewStore in
             
-        
-            VStack(alignment: .center, spacing: 12) {
-                rpmProgressView
-                    .padding(.top, 6)
-                Spacer()
-                HStack(spacing: 16) {
-                    VStack(spacing: 16) {
-                        rpmView
-                        speedView
-                    }
+            
+            ZStack {
+                Color.black
+                    .edgesIgnoringSafeArea(.all)
+                
+                
+                VStack(alignment: .center, spacing: 12) {
+                    rpmProgressView
+                        .padding(.top, 6)
                     Spacer()
-
-                    gearView
-
-                    Spacer()
-
-                    VStack(spacing: 16) {
-                        isRaceOnView
-                        boostView
+                    HStack(spacing: 16) {
+                        VStack(spacing: 16) {
+                            rpmView
+                            speedView
+                        }
+                        Spacer()
+                        
+                        gearView
+                        
+                        Spacer()
+                        
+                        VStack(spacing: 16) {
+                            isRaceOnView
+                            boostView
+                        }
                     }
                 }
+                
             }
-            
+            .onAppear {
+                viewStore.send(.onAppear)
+            }
         }
-        .onAppear {
-            viewModel.load()
-        }
-        
-        
     }
     
     var rpmProgressView: some View {
+        WithViewStore(store) { viewStore in
             ProgressView(
-                value: viewModel.data.currentEngineRPM,
-                total: viewModel.data.maxRPM
+                value: viewStore.state.model.currentEngineRPM,
+                total: viewStore.state.model.maxRPM
             )
             .frame(height: 60)
             .progressViewStyle(RPMProgressViewStyle())
+        }
     }
 
     var isRaceOnView: some View {
-        Rectangle()
-            .stroke(lineWidth: 3)
-            .foregroundColor(.white)
-            .overlay(alignment: .top) {
-                Text("R A C E  O N")
-                    .font(.title3)
-                    .padding(.horizontal, 8)
-                    .foregroundColor(.white)
-                    .background(.black)
-                    .offset(y: -10)
-            }
-            .overlay(
-                Image(systemName:"flag.checkered.circle")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .scaleEffect(0.8)
-                    .symbolRenderingMode(.palette)
-                    .if(
-                        viewModel.data.gameIsRunning,
-                        transform: {
-                            $0.foregroundStyle(.white, .green)
-                        },
-                        elseTransform: { $0.foregroundColor(.red)
-                        }
-                    )
-            )
+        WithViewStore(store) { viewStore in
+            Rectangle()
+                .stroke(lineWidth: 3)
+                .foregroundColor(.white)
+                .overlay(alignment: .top) {
+                    Text("R A C E  O N")
+                        .font(.title3)
+                        .padding(.horizontal, 8)
+                        .foregroundColor(.white)
+                        .background(.black)
+                        .offset(y: -10)
+                }
+                .overlay(
+                    Image(systemName:"flag.checkered.circle")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .scaleEffect(0.8)
+                        .symbolRenderingMode(.palette)
+                        .if(
+                            viewStore.state.model.gameIsRunning,
+                            transform: {
+                                $0.foregroundStyle(.white, .green)
+                            },
+                            elseTransform: { $0.foregroundColor(.red)
+                            }
+                        )
+                )
+        }
             
         
     }
     
     var gearView: some View {
-        Rectangle()
-            .stroke(lineWidth: 3)
-            .foregroundColor(.white)
-            .overlay(
-                Text(viewModel.data.gear == 0 ? "R" : viewModel.data.gear == 11 ? "N" : String(viewModel.data.gear))
-                        .foregroundColor(.white)
-                        .font(.init(.system(size: 100)))
-            )
-            .overlay(alignment: .top) {
-                Text("G E A R")
-                    .font(.title3)
-                    .padding(.horizontal, 8)
+        WithViewStore(store) { viewStore in
+            Rectangle()
+                .stroke(lineWidth: 3)
+                .foregroundColor(.white)
+                .overlay(
+                    Text(
+                        viewStore.state.model.gear == 0 ? "R" :
+                            viewStore.state.model.gear == 11 ? "N" :
+                            String(viewStore.state.model.gear)
+                    )
                     .foregroundColor(.white)
-                    .background(.black)
-                    .offset(y: -10)
-            }
+                    .font(.init(.system(size: 100)))
+                )
+                .overlay(alignment: .top) {
+                    Text("G E A R")
+                        .font(.title3)
+                        .padding(.horizontal, 8)
+                        .foregroundColor(.white)
+                        .background(.black)
+                        .offset(y: -10)
+                }
+        }
     }
     
     var rpmView: some View {
-        Rectangle()
-            .stroke(lineWidth: 3)
-            .foregroundColor(.white)
-            .overlay(
-                Text(String(Int(viewModel.data.currentEngineRPM)))
-                    .foregroundColor(.white)
-                    .font(.init(.system(size: 40)))
-            )
-            .overlay(alignment: .top) {
-                Text("R P M")
-                    .font(.title3)
-                    .padding(.horizontal, 8)
-                    .foregroundColor(.white)
-                    .background(.black)
-                    .offset(y: -10)
-            }
+        WithViewStore(store) { viewStore in
+            Rectangle()
+                .stroke(lineWidth: 3)
+                .foregroundColor(.white)
+                .overlay(
+                    Text(String(Int(viewStore.state.model.currentEngineRPM)))
+                        .foregroundColor(.white)
+                        .font(.init(.system(size: 60)))
+                )
+                .overlay(alignment: .top) {
+                    Text("R P M")
+                        .font(.title3)
+                        .padding(.horizontal, 8)
+                        .foregroundColor(.white)
+                        .background(.black)
+                        .offset(y: -10)
+                }
+        }
     }
     
     var speedView: some View {
-        Rectangle()
-            .strokeBorder(.white, lineWidth: 3)
-            .if(
-                viewModel.data.accel != 0,
-                transform: {
-                    $0.background(
-                        Rectangle().fill(.green)
+        WithViewStore(store) { viewStore in
+            Rectangle()
+                .strokeBorder(.white, lineWidth: 3)
+                .if(
+                    viewStore.state.model.accel != 0,
+                    transform: {
+                        $0.background(
+                            Rectangle().fill(.green)
+                        )
+                    },
+                    elseTransform: {
+                        $0.background(
+                            Rectangle().fill(.black)
+                        )
+                    }
+                )
+                    .overlay(
+                        Text(String(viewStore.state.model.speed))
+                            .foregroundColor(.white)
+                            .font(.init(.system(size: 60)))
                     )
-                },
-                elseTransform: {
-                    $0.background(
-                        Rectangle().fill(.black)
-                    )
+                        .overlay(alignment: .top) {
+                    Text("K M / H")
+                        .padding(.horizontal, 8)
+                        .foregroundColor(.white)
+                        .background(.black)
+                        .font(.title3)
+                        .offset(y: -10)
                 }
-            )
-            .overlay(
-                Text(String(viewModel.data.speed))
-                .foregroundColor(.white)
-                .font(.init(.system(size: 60)))
-            )
-            .overlay(alignment: .top) {
-                Text("K M / H")
-                    .padding(.horizontal, 8)
-                    .foregroundColor(.white)
-                    .background(.black)
-                    .font(.title3)
-                    .offset(y: -10)
-            }
-        
+        }
     }
     
     var boostView: some View {
-        Rectangle()
-            .stroke(lineWidth: 3)
-            .foregroundColor(.white)
-            .overlay(
-                Text(String(viewModel.data.boost))
+        WithViewStore(store) { viewStore in
+            Rectangle()
+                .stroke(lineWidth: 3)
                 .foregroundColor(.white)
-                .font(.init(.system(size: 60)))
-            )
-            .overlay(alignment: .top) {
-                Text("P S I")
-                    .font(.title3)
-                    .padding(.horizontal, 8)
-                    .foregroundColor(.white)
-                    .background(.black)
-                    .offset(y: -10)
-            }
-        
+                .overlay(
+                    Text(String(viewStore.state.model.boost))
+                        .foregroundColor(.white)
+                        .font(.init(.system(size: 60)))
+                )
+                .overlay(alignment: .top) {
+                    Text("P S I")
+                        .font(.title3)
+                        .padding(.horizontal, 8)
+                        .foregroundColor(.white)
+                        .background(.black)
+                        .offset(y: -10)
+                }
+            
+        }
     }
 }
 extension View {

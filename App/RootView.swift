@@ -4,7 +4,7 @@ import SwiftUI
 
 struct RootView: View {
     var body: some View {
-        DashView()
+        DashView(store: .init(initialState: Dash.State(model: .init()), reducer: Dash()))
     }
     
 }
