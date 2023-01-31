@@ -1,6 +1,7 @@
 import SwiftUI
 import Combine
 import ComposableArchitecture
+import CoreUI
 
 public struct DashView: View {
     var store: StoreOf<Dash>

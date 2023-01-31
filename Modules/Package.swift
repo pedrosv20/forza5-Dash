@@ -10,7 +10,8 @@ let package = Package(
         .library(name: "DashRepository", targets: ["DashRepository"]),
         .library(name: "DashRepositoryLive", targets: ["DashRepositoryLive"]),
         .library(name: "NetworkProviders", targets: ["NetworkProviders"]),
-        .library(name: "DashFeature", targets: ["DashFeature"])
+        .library(name: "DashFeature", targets: ["DashFeature"]),
+        .library(name: "CoreUI", targets: ["CoreUI"])
     ],
     dependencies: [
         .package(url: "https://github.com/robbiehanson/CocoaAsyncSocket", branch: "master"),
@@ -43,15 +44,19 @@ let package = Package(
             name: "DashFeature",
             dependencies: [
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-                "DashRepository"
+                "DashRepository",
+                "CoreUI"
             ]
         ),
 
         .testTarget(
             name: "ModuleTests",
             dependencies: []
-        )
+        ),
         
-        
+        .target(
+            name: "CoreUI",
+            dependencies: []
+        ),        
     ]
 )

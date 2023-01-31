@@ -1,6 +1,12 @@
 import Foundation
 import SwiftUI
 
+public extension View {
+    func threeColorProgressStyle() -> some View {
+        self.progressViewStyle(ThreeColorRPMProgressViewStyle())
+    }
+}
+
 struct ThreeColorRPMProgressViewStyle: ProgressViewStyle {
     @State var blinkColor: Color = .clear
 
@@ -9,11 +15,14 @@ struct ThreeColorRPMProgressViewStyle: ProgressViewStyle {
             ZStack(alignment: .leading) {
                 mainRPMRectanglesView(configuration, width: gProxy.size.width)
                 
-                ShiftLightView(fractionCompleted: configuration.fractionCompleted, width: gProxy.size.width)
+                ShiftLightView(
+                    width: gProxy.size.width,
+                    fractionCompleted: configuration.fractionCompleted
+                )
             }
         }
     }
-    
+
     func mainRPMRectanglesView(_ configuration: Configuration, width: CGFloat) -> some View {
         HStack(spacing: .zero) {
             Rectangle()
@@ -77,8 +86,4 @@ extension ThreeColorRPMProgressViewStyle {
     }
 }
 
-extension View {
-    func threeColorProgressStyle() -> some View {
-        self.progressViewStyle(ThreeColorRPMProgressViewStyle())
-    }
-}
+
