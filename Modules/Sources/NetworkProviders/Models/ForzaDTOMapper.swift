@@ -46,12 +46,12 @@ struct ForzaDTOMapper {
             return roundedTorque > 0 ? roundedTorque : 0
         }()
         
-        let distanceTraveled: Float = {
+        let distanceTraveled: Int = {
             let distanceTraveledValue: Float = data[292..<296].floatValue()
-            let normalizedDistanceTraveled = distanceTraveledValue * 1.609344
-            return normalizedDistanceTraveled
+            let normalizedDistanceTraveled = distanceTraveledValue /  1.8652
+            return Int(normalizedDistanceTraveled)
         }()
-
+        
         return .init(
             gameIsRunning: data[0] == 1,
             maxRPM: data[8..<12].floatValue(),
@@ -78,7 +78,7 @@ struct ForzaDTOMapper {
     }
 }
 
-extension Data {
+extension Data { // add to extensions
     func floatValue() -> Float {
         Float(bitPattern: UInt32(littleEndian: self.withUnsafeBytes { $0.load(as: UInt32.self) }))
     }
