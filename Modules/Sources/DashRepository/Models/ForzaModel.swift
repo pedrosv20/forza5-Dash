@@ -1,6 +1,6 @@
 import Foundation
 
-public struct ForzaModel {
+public struct ForzaModel: Equatable {
     public let gameIsRunning: Bool
     public let maxRPM: Float
     public let idleRPM: Float
@@ -19,7 +19,7 @@ public struct ForzaModel {
     public let carPerformanceIndex: Int
     public let driveTrainType: Int
     public let numOfCylinders: Int
-    public let distanceTraveled: Float
+    public let distanceTraveled: Int
     
     public init(
         gameIsRunning: Bool = false,
@@ -40,7 +40,7 @@ public struct ForzaModel {
         carPerformanceIndex: Int = 0,
         driveTrainType: Int = 0,
         numOfCylinders: Int = 0,
-        distanceTraveled: Float = 0
+        distanceTraveled: Int = 0
     ) {
         self.gameIsRunning = gameIsRunning
         self.maxRPM = maxRPM
@@ -84,7 +84,8 @@ public extension ForzaModel {
         carClass: Int = 3,
         carPerformanceIndex: Int = 700,
         driveTrainType: Int = 2,
-        numOfCylinders: Int = 6
+        numOfCylinders: Int = 6,
+        distanceTraveled: Int = 0
     ) -> Self {
         self.init(
             gameIsRunning: gameIsRunning,
@@ -104,7 +105,8 @@ public extension ForzaModel {
             carClass: carClass,
             carPerformanceIndex: carPerformanceIndex,
             driveTrainType: driveTrainType,
-            numOfCylinders: numOfCylinders
+            numOfCylinders: numOfCylinders,
+            distanceTraveled: distanceTraveled
         )
         
     }
