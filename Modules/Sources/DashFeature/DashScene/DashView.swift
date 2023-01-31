@@ -1,56 +1,6 @@
 import SwiftUI
 import Combine
 import ComposableArchitecture
-import DashRepository
-
-public enum CommonError: Error {
-    case couldNotConnectToIP
-}
-
-public struct Dash: ReducerProtocol {
-    public struct State: Equatable {
-        public var model: ForzaModel
-        
-        public init(model: ForzaModel) {
-            self.model = model
-        }
-    }
-
-    public enum Action {
-        case onAppear
-        case requestData
-        case handleRequestedData(Result<ForzaModel, Error>)
-    }
-    let mainQueue: DispatchQueue = .main
-    @Dependency(\.forzaService) var forzaService
-
-    public init() {}
-
-    public var body: some ReducerProtocol<State, Action> {
-        Reduce { state, action in
-            switch action {
-            case .onAppear:
-                return .init(value: .requestData)
-
-            case .requestData:
-                return forzaService
-                    .getForzaInfo()
-                    .receive(on: DispatchQueue.main)
-                    .catchToEffect()
-                    .map(Action.handleRequestedData)
-
-
-            case let .handleRequestedData(.success(model)):
-                state.model = model
-                return .none
-
-            case .handleRequestedData(.failure(_)):
-                return .none
-            }
-        }
-    }
-}
-
 
 public struct DashView: View {
     var store: StoreOf<Dash>
@@ -61,8 +11,6 @@ public struct DashView: View {
     
     public var body: some View {
         WithViewStore(store) { viewStore in
-            
-            
             ZStack {
                 Color.black
                     .edgesIgnoringSafeArea(.all)
@@ -70,8 +18,9 @@ public struct DashView: View {
                 
                 VStack(alignment: .center, spacing: 12) {
                     rpmProgressView
-                        .padding(.top, 6)
+                        .padding(.top, 12)
                     Spacer()
+
                     HStack(spacing: 16) {
                         VStack(spacing: 16) {
                             rpmView
@@ -91,6 +40,14 @@ public struct DashView: View {
                 }
                 
             }
+            .if(
+                viewStore.state.model.gameIsRunning == false, transform: {
+                    $0.overlay(alignment: .topLeading) {
+                        Text(viewStore.state.ip)
+                                .foregroundColor(.white)
+                                .background(Color.black)
+                    }
+                })
             .onAppear {
                 viewStore.send(.onAppear)
             }
@@ -104,8 +61,9 @@ public struct DashView: View {
                 total: viewStore.state.model.maxRPM
             )
             .frame(height: 60)
-            .progressViewStyle(RPMProgressViewStyle())
+            .threeColorProgressStyle()
         }
+        .padding(.horizontal)
     }
 
     var isRaceOnView: some View {
@@ -113,6 +71,7 @@ public struct DashView: View {
             Rectangle()
                 .stroke(lineWidth: 3)
                 .foregroundColor(.white)
+                .padding()
                 .overlay(alignment: .top) {
                     Text("R A C E  O N")
                         .font(.title3)
@@ -120,6 +79,7 @@ public struct DashView: View {
                         .foregroundColor(.white)
                         .background(.black)
                         .offset(y: -10)
+                        .padding()
                 }
                 .overlay(
                     Image(systemName:"flag.checkered.circle")
@@ -135,6 +95,7 @@ public struct DashView: View {
                             elseTransform: { $0.foregroundColor(.red)
                             }
                         )
+                        .padding(20)
                 )
         }
             
@@ -163,6 +124,7 @@ public struct DashView: View {
                         .background(.black)
                         .offset(y: -10)
                 }
+                .padding()
         }
     }
     
@@ -171,6 +133,7 @@ public struct DashView: View {
             Rectangle()
                 .stroke(lineWidth: 3)
                 .foregroundColor(.white)
+                .padding()
                 .overlay(
                     Text(String(Int(viewStore.state.model.currentEngineRPM)))
                         .foregroundColor(.white)
@@ -183,6 +146,7 @@ public struct DashView: View {
                         .foregroundColor(.white)
                         .background(.black)
                         .offset(y: -10)
+                        .padding()
                 }
         }
     }
@@ -196,11 +160,6 @@ public struct DashView: View {
                     transform: {
                         $0.background(
                             Rectangle().fill(.green)
-                        )
-                    },
-                    elseTransform: {
-                        $0.background(
-                            Rectangle().fill(.black)
                         )
                     }
                 )
@@ -217,6 +176,7 @@ public struct DashView: View {
                         .font(.title3)
                         .offset(y: -10)
                 }
+                .padding()
         }
     }
     
@@ -238,46 +198,8 @@ public struct DashView: View {
                         .background(.black)
                         .offset(y: -10)
                 }
+                .padding()
             
-        }
-    }
-}
-extension View {
-    @ViewBuilder
-    func `if`<Content: View>(_ condition: Bool, transform: ((Self) -> Content)) -> some View {
-        if condition {
-            transform(self)
-        } else {
-            self
-        }
-    }
-    
-    @ViewBuilder
-    func `if`<IFContent: View, ElseContent: View>(
-        _ condition: Bool,
-        transform: ((Self) -> IFContent),
-        elseTransform: ((Self) -> ElseContent)
-    ) -> some View {
-        if condition {
-            transform(self)
-        } else {
-            elseTransform(self)
-        }
-    }
-}
-
-struct RPMProgressViewStyle: ProgressViewStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        return GeometryReader { gproxy in
-            Rectangle()
-                .stroke(lineWidth: 3)
-                .frame(height: 60)
-                .foregroundColor(.white)
-                .background(alignment: .leading) { Color.red
-                        .frame(width: CGFloat(configuration.fractionCompleted ?? 0) * gproxy.size.width
-                        )
-                }
-            //TODO: break into 3 parts green yellow and red
         }
     }
 }
