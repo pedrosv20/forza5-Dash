@@ -1,6 +1,13 @@
 import Foundation
 import SwiftUI
 
+public extension View {
+    func simpleRPMProgressStyle() -> some View {
+        self.progressViewStyle(SimpleRPMProgressViewStyle())
+    }
+}
+
+
 struct SimpleRPMProgressViewStyle: ProgressViewStyle {
     func makeBody(configuration: Configuration) -> some View {
         return GeometryReader { gProxy in
@@ -17,12 +24,5 @@ struct SimpleRPMProgressViewStyle: ProgressViewStyle {
                     }
             }
         }
-    }
-}
-
-
-extension View {
-    func simpleRPMProgressStyle() -> some View {
-        self.progressViewStyle(SimpleRPMProgressViewStyle())
     }
 }

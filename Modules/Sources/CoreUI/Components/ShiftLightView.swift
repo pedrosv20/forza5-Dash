@@ -1,13 +1,15 @@
 import Foundation
 import SwiftUI
 
-struct ShiftLightView: View {
-    @State private var blinkColor: Color = .black
-    var fractionCompleted: Double?
-    var width: CGFloat
+public struct ShiftLightView: View {
+    @State private var blinkColor: Color = .clear
     var backgroundColor: Color = .black
+
+    var width: CGFloat
+    var fractionCompleted: Double?
     
-    var body: some View {
+    
+    public var body: some View {
         Rectangle()
             .stroke(lineWidth: 3)
             .fill(.white)
