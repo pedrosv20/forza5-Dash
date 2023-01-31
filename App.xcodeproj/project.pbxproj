@@ -16,7 +16,6 @@
 		0749AA8A296370C500BE454E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0749AA85296370C400BE454E /* Preview Assets.xcassets */; };
 		0749AA8C296370D400BE454E /* ForzaDashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749AA80296370C400BE454E /* ForzaDashTests.swift */; };
 		075ECC8B296C741600C5FDB5 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075ECC8A296C741600C5FDB5 /* RootView.swift */; };
-		07768AC52968ECBE008421CF /* DragyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07768AC42968ECBE008421CF /* DragyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +34,6 @@
 		0749AA83296370C400BE454E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0749AA85296370C400BE454E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		075ECC8A296C741600C5FDB5 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		07768AC42968ECBE008421CF /* DragyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragyView.swift; sourceTree = "<group>"; };
 		079C254C2963540B00DBD90D /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		079C255C2963540D00DBD90D /* AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		07BE2DDA29647D4100270FF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -78,7 +76,6 @@
 				0749AA82296370C400BE454E /* ForzaDashApp.swift */,
 				0749AA83296370C400BE454E /* Assets.xcassets */,
 				0749AA84296370C400BE454E /* Preview Content */,
-				07768AC42968ECBE008421CF /* DragyView.swift */,
 				075ECC8A296C741600C5FDB5 /* RootView.swift */,
 			);
 			path = App;
@@ -225,7 +222,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				075ECC8B296C741600C5FDB5 /* RootView.swift in Sources */,
-				07768AC52968ECBE008421CF /* DragyView.swift in Sources */,
 				0749AA88296370C500BE454E /* ForzaDashApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +295,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -353,6 +350,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
