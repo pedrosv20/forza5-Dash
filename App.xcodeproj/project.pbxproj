@@ -8,15 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		070479AD296C6385008E1ADE /* DashFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 070479AC296C6385008E1ADE /* DashFeature */; };
-		070479AF296C6385008E1ADE /* DashRepository in Frameworks */ = {isa = PBXBuildFile; productRef = 070479AE296C6385008E1ADE /* DashRepository */; };
-		070479B1296C6385008E1ADE /* DashRepositoryLive in Frameworks */ = {isa = PBXBuildFile; productRef = 070479B0296C6385008E1ADE /* DashRepositoryLive */; };
 		070479B3296C6385008E1ADE /* NetworkProviders in Frameworks */ = {isa = PBXBuildFile; productRef = 070479B2296C6385008E1ADE /* NetworkProviders */; };
+		070657E4298994E30042B957 /* CoreUI in Frameworks */ = {isa = PBXBuildFile; productRef = 070657E3298994E30042B957 /* CoreUI */; };
 		0749AA88296370C500BE454E /* ForzaDashApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749AA82296370C400BE454E /* ForzaDashApp.swift */; };
 		0749AA89296370C500BE454E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0749AA83296370C400BE454E /* Assets.xcassets */; };
 		0749AA8A296370C500BE454E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0749AA85296370C400BE454E /* Preview Assets.xcassets */; };
 		0749AA8C296370D400BE454E /* ForzaDashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749AA80296370C400BE454E /* ForzaDashTests.swift */; };
-		074AC48B29898B3400B9DB93 /* CoreUI in Frameworks */ = {isa = PBXBuildFile; productRef = 074AC48A29898B3400B9DB93 /* CoreUI */; };
 		075ECC8B296C741600C5FDB5 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075ECC8A296C741600C5FDB5 /* RootView.swift */; };
+		07D581032989937500A17B47 /* ForzaRepository in Frameworks */ = {isa = PBXBuildFile; productRef = 07D581022989937500A17B47 /* ForzaRepository */; };
+		07D581052989937500A17B47 /* ForzaRepositoryLive in Frameworks */ = {isa = PBXBuildFile; productRef = 07D581042989937500A17B47 /* ForzaRepositoryLive */; };
+		07D581072989937900A17B47 /* DragyFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 07D581062989937900A17B47 /* DragyFeature */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +36,6 @@
 		0749AA83296370C400BE454E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0749AA85296370C400BE454E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		075ECC8A296C741600C5FDB5 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		0766D66729898B0700B38F4C /* CoreUI */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CoreUI; path = Modules/Sources/CoreUI; sourceTree = "<group>"; };
 		079C254C2963540B00DBD90D /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		079C255C2963540D00DBD90D /* AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		07BE2DDA29647D4100270FF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -46,11 +46,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				074AC48B29898B3400B9DB93 /* CoreUI in Frameworks */,
+				07D581032989937500A17B47 /* ForzaRepository in Frameworks */,
 				070479B3296C6385008E1ADE /* NetworkProviders in Frameworks */,
-				070479B1296C6385008E1ADE /* DashRepositoryLive in Frameworks */,
-				070479AF296C6385008E1ADE /* DashRepository in Frameworks */,
+				07D581072989937900A17B47 /* DragyFeature in Frameworks */,
+				07D581052989937500A17B47 /* ForzaRepositoryLive in Frameworks */,
 				070479AD296C6385008E1ADE /* DashFeature in Frameworks */,
+				070657E4298994E30042B957 /* CoreUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,7 +115,6 @@
 		07BE2DE029648B5100270FF3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0766D66729898B0700B38F4C /* CoreUI */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -137,10 +137,11 @@
 			name = App;
 			packageProductDependencies = (
 				070479AC296C6385008E1ADE /* DashFeature */,
-				070479AE296C6385008E1ADE /* DashRepository */,
-				070479B0296C6385008E1ADE /* DashRepositoryLive */,
 				070479B2296C6385008E1ADE /* NetworkProviders */,
-				074AC48A29898B3400B9DB93 /* CoreUI */,
+				07D581022989937500A17B47 /* ForzaRepository */,
+				07D581042989937500A17B47 /* ForzaRepositoryLive */,
+				07D581062989937900A17B47 /* DragyFeature */,
+				070657E3298994E30042B957 /* CoreUI */,
 			);
 			productName = ForzaDash;
 			productReference = 079C254C2963540B00DBD90D /* App.app */;
@@ -390,10 +391,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.PedroVargas1.ForzaDash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -423,9 +428,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.PedroVargas.ForzaDash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -509,21 +518,25 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = DashFeature;
 		};
-		070479AE296C6385008E1ADE /* DashRepository */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DashRepository;
-		};
-		070479B0296C6385008E1ADE /* DashRepositoryLive */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DashRepositoryLive;
-		};
 		070479B2296C6385008E1ADE /* NetworkProviders */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = NetworkProviders;
 		};
-		074AC48A29898B3400B9DB93 /* CoreUI */ = {
+		070657E3298994E30042B957 /* CoreUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CoreUI;
+		};
+		07D581022989937500A17B47 /* ForzaRepository */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ForzaRepository;
+		};
+		07D581042989937500A17B47 /* ForzaRepositoryLive */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ForzaRepositoryLive;
+		};
+		07D581062989937900A17B47 /* DragyFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DragyFeature;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

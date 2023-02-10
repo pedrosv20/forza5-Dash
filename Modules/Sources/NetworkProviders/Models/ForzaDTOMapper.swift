@@ -12,17 +12,24 @@ struct ForzaDTOMapper {
 
         let boost: Float = {
             let boostValue: Float = data[284..<288].floatValue()
-            if carOrdinal != currentCar, carOrdinal != 0, boostValue > -14, boostValue != 0.0 {
+            print(boostValue)
+            if
+                carOrdinal != currentCar,
+                boostValue > -14,
+                boostValue != 0.0 {
                 hasTurbo = true
-            } else if carOrdinal != currentCar, carOrdinal != 0, boostValue < -14 {
+            } else if
+                carOrdinal != currentCar,
+                boostValue < -14,
+                boostValue != 0.0 {
                 hasTurbo = false
             }
             let normalizedBoost = boostValue / 14.5065759358
             let roundedData: Float = round(normalizedBoost * 100) / 100
             return hasTurbo ? roundedData : 0
         }()
-        
-        if currentCar != carOrdinal, carOrdinal != 0 {
+
+        if currentCar != carOrdinal {
             currentCar = carOrdinal
         }
         

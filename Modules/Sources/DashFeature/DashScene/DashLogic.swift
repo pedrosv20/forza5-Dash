@@ -1,5 +1,5 @@
 import ComposableArchitecture
-import DashRepository
+import ForzaRepository
 import Foundation
 
 public struct Dash: ReducerProtocol {

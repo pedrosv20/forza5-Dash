@@ -241,7 +241,10 @@ public struct DragyView: View {
                                 .foregroundColor(.white)
                         }
                     }
+                    #if os(iOS)
                     .pickerStyle(WheelPickerStyle())
+                    #endif
+                    
                 }
                 .overlay(alignment: .top) {
                     Text("DRAGY TYPE")
