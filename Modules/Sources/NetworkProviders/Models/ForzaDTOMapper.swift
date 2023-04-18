@@ -12,7 +12,7 @@ struct ForzaDTOMapper {
 
         let boost: Float = {
             let boostValue: Float = data[284..<288].floatValue()
-            print(boostValue)
+
             if
                 carOrdinal != currentCar,
                 boostValue > -14,
@@ -59,6 +59,16 @@ struct ForzaDTOMapper {
             return Int(normalizedDistanceTraveled)
         }()
         
+        let accelerationX: Double = {
+           let rawAccelerationX = data[20..<24].floatValue()
+            return round(Double(rawAccelerationX) * -100)
+        }()
+        
+        let accelerationY: Double = {
+           let rawAccelerationY = data[28..<32].floatValue()
+            return round(Double(rawAccelerationY) * 100)
+        }()
+        
         return .init(
             gameIsRunning: data[0] == 1,
             maxRPM: data[8..<12].floatValue(),
@@ -78,7 +88,9 @@ struct ForzaDTOMapper {
             carPerformanceIndex: data[220..<224].intValue(),
             driveTrainType: data[224..<228].intValue(),
             numOfCylinders: data[228..<232].intValue(),
-            distanceTraveled: distanceTraveled
+            distanceTraveled: distanceTraveled,
+            accelerationX: accelerationX,
+            accelerationY: accelerationY
         )
         
         

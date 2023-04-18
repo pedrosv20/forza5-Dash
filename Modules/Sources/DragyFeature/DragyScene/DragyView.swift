@@ -2,6 +2,7 @@ import SwiftUI
 import Combine
 import ComposableArchitecture
 import CoreUI
+// TODO: add gear for god sake
 
 public struct DragyView: View {
     var store: StoreOf<Dragy>
@@ -70,7 +71,7 @@ public struct DragyView: View {
                         .font(.init(.system(size: 60)))
                 )
                 .overlay(alignment: .top) {
-                    Text("P S I")
+                    Text("B A R")
                         .font(.title3)
                         .padding(.horizontal, 8)
                         .foregroundColor(.white)
@@ -126,6 +127,7 @@ public struct DragyView: View {
                         .onTapGesture {
                             viewStore.send(.draggyButtonTapped(!viewStore.state.isDragyOn))
                         }
+                        .disabled(viewStore.state.model.gameIsRunning == false)
                 )
         }
 

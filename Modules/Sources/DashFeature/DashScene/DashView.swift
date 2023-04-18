@@ -192,7 +192,7 @@ public struct DashView: View {
                         .font(.init(.system(size: 60)))
                 )
                 .overlay(alignment: .top) {
-                    Text("P S I")
+                    Text("B A R")
                         .font(.title3)
                         .padding(.horizontal, 8)
                         .foregroundColor(.white)

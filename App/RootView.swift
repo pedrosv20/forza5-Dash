@@ -1,12 +1,14 @@
 import CoreUI
 import DashFeature
 import DragyFeature
+import GForceFeature
 import Foundation
 import SwiftUI
 
 enum AppContext: Equatable {
     case dragy
     case dash
+    case gForce
 }
 
 struct RootView: View {
@@ -26,9 +28,21 @@ struct RootView: View {
     func currentView() -> some View {
         switch appContext {
         case .dragy:
-            DragyView(store: .init(initialState: Dragy.State(), reducer: Dragy()))
+            DragyView(store: .init(
+                initialState: Dragy.State(),
+                reducer: Dragy())
+            )
         case .dash:
-            DashView(store: .init(initialState: Dash.State(), reducer: Dash()))
+            DashView(store: .init(
+                initialState: Dash.State(),
+                reducer: Dash())
+            )
+        case .gForce:
+            GForceView(store: .init(
+                initialState: GForce.State(),
+                reducer: GForce()
+                )
+            )
         }
     }
     
@@ -36,9 +50,11 @@ struct RootView: View {
     func toggleContext() {
         switch appContext {
         case .dragy:
-            appContext = .dash
+            appContext = .gForce
         case .dash:
             appContext = .dragy
+        case .gForce:
+            appContext = .dash
         }
     }
 }

@@ -20,6 +20,8 @@ public struct ForzaModel: Equatable {
     public let driveTrainType: Int
     public let numOfCylinders: Int
     public let distanceTraveled: Int
+    public let accelerationX: Double
+    public let accelerationY: Double
     
     public init(
         gameIsRunning: Bool = false,
@@ -40,7 +42,9 @@ public struct ForzaModel: Equatable {
         carPerformanceIndex: Int = 0,
         driveTrainType: Int = 0,
         numOfCylinders: Int = 0,
-        distanceTraveled: Int = 0
+        distanceTraveled: Int = 0,
+        accelerationX: Double = 0.0,
+        accelerationY: Double = 0.0
     ) {
         self.gameIsRunning = gameIsRunning
         self.maxRPM = maxRPM
@@ -61,6 +65,8 @@ public struct ForzaModel: Equatable {
         self.driveTrainType = driveTrainType
         self.numOfCylinders = numOfCylinders
         self.distanceTraveled = distanceTraveled
+        self.accelerationX = accelerationX
+        self.accelerationY = accelerationY
     }
 }
 
@@ -85,7 +91,9 @@ public extension ForzaModel {
         carPerformanceIndex: Int = 700,
         driveTrainType: Int = 2,
         numOfCylinders: Int = 6,
-        distanceTraveled: Int = 0
+        distanceTraveled: Int = 0,
+        accelerationX: Double = 0,
+        accelerationY: Double = 0
     ) -> Self {
         self.init(
             gameIsRunning: gameIsRunning,
@@ -106,7 +114,9 @@ public extension ForzaModel {
             carPerformanceIndex: carPerformanceIndex,
             driveTrainType: driveTrainType,
             numOfCylinders: numOfCylinders,
-            distanceTraveled: distanceTraveled
+            distanceTraveled: distanceTraveled,
+            accelerationX: accelerationX,
+            accelerationY: accelerationY
         )
         
     }

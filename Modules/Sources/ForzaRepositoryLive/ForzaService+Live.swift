@@ -30,7 +30,9 @@ public extension ForzaService {
                     carPerformanceIndex: response.carPerformanceIndex,
                     driveTrainType: response.driveTrainType,
                     numOfCylinders: response.numOfCylinders,
-                    distanceTraveled: response.distanceTraveled
+                    distanceTraveled: response.distanceTraveled,
+                    accelerationX: response.accelerationX,
+                    accelerationY: response.accelerationY
                 )
             }
             .mapError { error in
