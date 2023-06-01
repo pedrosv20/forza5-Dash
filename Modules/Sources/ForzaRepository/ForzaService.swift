@@ -1,7 +1,6 @@
 import Combine
 import Dependencies
 import Foundation
-import XCTestDynamicOverlay
 
 public struct ForzaService{
     public var getForzaInfo: () -> AnyPublisher<ForzaModel, Error>

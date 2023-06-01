@@ -1,8 +1,8 @@
 import Combine
 import Dependencies
+import ForzaRepository
 import Foundation
 import NetworkProviders
-import DashRepository
 
 public extension ForzaService {
     static let live: Self = .init {

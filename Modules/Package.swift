@@ -5,12 +5,13 @@ import PackageDescription
 
 let package = Package(
     name: "Modules",
-    platforms: [.iOS(.v16)],
+    platforms: [.iOS(.v16), .macOS(.v13)],
     products: [
-        .library(name: "DashRepository", targets: ["DashRepository"]),
-        .library(name: "DashRepositoryLive", targets: ["DashRepositoryLive"]),
+        .library(name: "ForzaRepository", targets: ["ForzaRepository"]),
+        .library(name: "ForzaRepositoryLive", targets: ["ForzaRepositoryLive"]),
         .library(name: "NetworkProviders", targets: ["NetworkProviders"]),
         .library(name: "DashFeature", targets: ["DashFeature"]),
+        .library(name: "DragyFeature", targets: ["DragyFeature"]),
         .library(name: "CoreUI", targets: ["CoreUI"])
     ],
     dependencies: [
@@ -19,16 +20,16 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "DashRepository",
+            name: "ForzaRepository",
             dependencies: [
                 .product(name: "Dependencies", package: "swift-composable-architecture")
             ]
         ),
 
         .target(
-            name: "DashRepositoryLive",
+            name: "ForzaRepositoryLive",
             dependencies: [
-                "DashRepository",
+                "ForzaRepository",
                 "NetworkProviders"
             ]
         ),
@@ -44,10 +45,19 @@ let package = Package(
             name: "DashFeature",
             dependencies: [
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-                "DashRepository",
+                "ForzaRepository",
                 "CoreUI"
             ]
         ),
+        
+            .target(
+                name: "DragyFeature",
+                dependencies: [
+                    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+                    "ForzaRepository",
+                    "CoreUI"
+                ]
+            ),
 
         .testTarget(
             name: "ModuleTests",

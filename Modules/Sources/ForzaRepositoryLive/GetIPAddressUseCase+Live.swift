@@ -1,5 +1,5 @@
-import DashRepository
 import Dependencies
+import ForzaRepository
 import Foundation
 
 public extension GetIPAddressUseCase {

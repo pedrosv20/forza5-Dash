@@ -1,10 +1,3 @@
-//
-//  ForzaDashApp.swift
-//  ForzaDash
-//
-//  Created by Pedro Vargas on 02/01/23.
-//
-
 import SwiftUI
 
 @main

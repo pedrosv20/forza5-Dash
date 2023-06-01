@@ -1,5 +1,6 @@
 import CoreUI
 import DashFeature
+import DragyFeature
 import Foundation
 import SwiftUI
 

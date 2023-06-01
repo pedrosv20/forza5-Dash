@@ -1,6 +1,6 @@
 import Foundation
 import ComposableArchitecture
-import DashRepository
+import ForzaRepository
 
 public struct Dragy: ReducerProtocol {
     public struct State: Equatable {
