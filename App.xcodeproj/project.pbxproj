@@ -14,6 +14,7 @@
 		0749AA89296370C500BE454E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0749AA83296370C400BE454E /* Assets.xcassets */; };
 		0749AA8A296370C500BE454E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0749AA85296370C400BE454E /* Preview Assets.xcassets */; };
 		0749AA8C296370D400BE454E /* ForzaDashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749AA80296370C400BE454E /* ForzaDashTests.swift */; };
+		075261292996AD4400C0A916 /* GForceFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 075261282996AD4400C0A916 /* GForceFeature */; };
 		075ECC8B296C741600C5FDB5 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075ECC8A296C741600C5FDB5 /* RootView.swift */; };
 		07D581032989937500A17B47 /* ForzaRepository in Frameworks */ = {isa = PBXBuildFile; productRef = 07D581022989937500A17B47 /* ForzaRepository */; };
 		07D581052989937500A17B47 /* ForzaRepositoryLive in Frameworks */ = {isa = PBXBuildFile; productRef = 07D581042989937500A17B47 /* ForzaRepositoryLive */; };
@@ -46,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				075261292996AD4400C0A916 /* GForceFeature in Frameworks */,
 				07D581032989937500A17B47 /* ForzaRepository in Frameworks */,
 				070479B3296C6385008E1ADE /* NetworkProviders in Frameworks */,
 				07D581072989937900A17B47 /* DragyFeature in Frameworks */,
@@ -142,6 +144,7 @@
 				07D581042989937500A17B47 /* ForzaRepositoryLive */,
 				07D581062989937900A17B47 /* DragyFeature */,
 				070657E3298994E30042B957 /* CoreUI */,
+				075261282996AD4400C0A916 /* GForceFeature */,
 			);
 			productName = ForzaDash;
 			productReference = 079C254C2963540B00DBD90D /* App.app */;
@@ -525,6 +528,10 @@
 		070657E3298994E30042B957 /* CoreUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CoreUI;
+		};
+		075261282996AD4400C0A916 /* GForceFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GForceFeature;
 		};
 		07D581022989937500A17B47 /* ForzaRepository */ = {
 			isa = XCSwiftPackageProductDependency;

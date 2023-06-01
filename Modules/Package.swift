@@ -12,7 +12,8 @@ let package = Package(
         .library(name: "NetworkProviders", targets: ["NetworkProviders"]),
         .library(name: "DashFeature", targets: ["DashFeature"]),
         .library(name: "DragyFeature", targets: ["DragyFeature"]),
-        .library(name: "CoreUI", targets: ["CoreUI"])
+        .library(name: "GForceFeature", targets: ["GForceFeature"]),
+        .library(name: "CoreUI", targets: ["CoreUI"]),
     ],
     dependencies: [
         .package(url: "https://github.com/robbiehanson/CocoaAsyncSocket", branch: "master"),
@@ -52,6 +53,15 @@ let package = Package(
         
             .target(
                 name: "DragyFeature",
+                dependencies: [
+                    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+                    "ForzaRepository",
+                    "CoreUI"
+                ]
+            ),
+        
+            .target(
+                name: "GForceFeature",
                 dependencies: [
                     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
                     "ForzaRepository",
