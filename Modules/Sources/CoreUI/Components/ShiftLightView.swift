@@ -16,7 +16,7 @@ public struct ShiftLightView: View {
             .frame(width: width, height: 60)
             .background(blinkColor)
             .onChange(of: fractionCompleted ?? 0, perform: { value in
-                if value > 0.87 {
+                if value > 0.9 {
                     blinkColor = blinkColor == .red ? backgroundColor : .red
                 } else {
                     blinkColor = .clear
