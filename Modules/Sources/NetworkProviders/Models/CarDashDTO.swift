@@ -1,6 +1,6 @@
 import Foundation
 
-public struct ForzaDTO {
+public struct CarDashDTO {
     public let gameIsRunning: Bool
     public let maxRPM: Float
     public let idleRPM: Float
@@ -25,7 +25,7 @@ public struct ForzaDTO {
 }
 
 #if DEBUG
-public extension ForzaDTO {
+public extension CarDashDTO {
     static func fixture(
         gameIsRunning: Bool = true,
         maxRPM: Float = 8000,

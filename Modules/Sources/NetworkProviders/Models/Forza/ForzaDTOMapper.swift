@@ -1,9 +1,9 @@
 import Foundation
 
-struct ForzaDTOMapper {
+public struct ForzaDTOMapper {
     static var currentCar: Int = 0
     static var hasTurbo = true
-    static func map(data: Data) -> ForzaDTO {
+    static func map(data: Data) -> CarDashDTO {
         
         let carOrdinal: Int = {
             let car = data[212..<216].intValue()

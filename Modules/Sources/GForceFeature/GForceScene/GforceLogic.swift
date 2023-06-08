@@ -32,11 +32,11 @@ public struct GForce: ReducerProtocol {
                 return .merge(.init(value: .getIP), .init(value: Action.requestData))
 
             case .requestData:
-                return forzaService
-                    .getForzaInfo()
-                    .receive(on: mainQueue)
-                    .catchToEffect()
-                    .map(Action.handleRequestedData)
+                return .run { send in
+                    for await model in forzaService.getForzaInfoAsync() {
+                        await send(.handleRequestedData(.success(model)))
+                    }
+                }
 
 
             case let .handleRequestedData(.success(model)):

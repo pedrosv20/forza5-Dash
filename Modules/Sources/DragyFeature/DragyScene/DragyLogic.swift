@@ -70,11 +70,11 @@ public struct Dragy: ReducerProtocol {
                 return .init(value: .loadData)
 
             case .loadData:
-                return forzaService
-                    .getForzaInfo()
-                    .receive(on: mainQueue)
-                    .catchToEffect()
-                    .map(Action.handleLoadedData)
+              return .run { send in
+                for await model in forzaService.getForzaInfoAsync() {
+                    await send(.handleLoadedData(.success(model)))
+                }
+            }
 
 
             case let .handleLoadedData(.success(model)):

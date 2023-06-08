@@ -3,10 +3,10 @@ import Dependencies
 import Foundation
 
 public struct ForzaService{
-    public var getForzaInfo: () -> AnyPublisher<ForzaModel, Error>
+    public var getForzaInfoAsync: () -> AsyncStream<ForzaModel>
     
-    public init(getForzaInfo: @escaping () -> AnyPublisher<ForzaModel, Error>) {
-        self.getForzaInfo = getForzaInfo
+    public init(getForzaInfoAsync: @escaping () ->  AsyncStream<ForzaModel>) {
+        self.getForzaInfoAsync = getForzaInfoAsync
     }
 }
 
@@ -25,16 +25,23 @@ extension DependencyValues {
 public extension ForzaService {
     static var counter = -1
     static let mock: Self = .init {
-        Timer.publish(every: 0.0001, on: .main, in: .default).autoconnect()
-            .map { _ in
-                if counter == 1000 {
-                    counter = -1
+        AsyncStream(
+            ForzaModel.self, {
+                continuation in
+                Task {
+                    while true {
+                        if counter == 1000 {
+                            counter = -1
+                        }
+                        counter += 1
+                        
+                        continuation.yield(.fixture(gameIsRunning: true, speed: counter))
+                        
+                        try? await Task.sleep(nanoseconds: 1_000)
+                    }
                 }
-                counter += 1
-                return ForzaModel.fixture(gameIsRunning: true, maxRPM: 1000, currentEngineRPM: Float(counter), speed: counter)
             }
-            .setFailureType(to: Error.self)
-            .eraseToAnyPublisher()
+        )
     }
 }
 #endif

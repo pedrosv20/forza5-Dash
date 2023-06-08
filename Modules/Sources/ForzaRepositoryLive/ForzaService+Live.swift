@@ -6,10 +6,8 @@ import NetworkProviders
 
 public extension ForzaService {
     static let live: Self = .init {
-        UDPConnectionProvider
-            .shared
-            .getTelemetryData()
-            .receive(on: DispatchQueue.main)
+        let sequence = ForzaUDPConnectionProvider.shared
+            .asyncStream
             .map { response in
                 ForzaModel(
                     gameIsRunning: response.gameIsRunning,
@@ -35,10 +33,7 @@ public extension ForzaService {
                     accelerationY: response.accelerationY
                 )
             }
-            .mapError { error in
-                NSError.init(domain: "error", code: 10)
-            }
-            .eraseToAnyPublisher()
+        return AsyncStream(sequence)
     }
 }
 
