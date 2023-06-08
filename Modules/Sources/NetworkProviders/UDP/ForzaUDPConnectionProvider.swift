@@ -6,17 +6,16 @@ import CocoaAsyncSocket
 public enum CommonError: Error {
     case couldNotConnectToIP
 }
-public final class UDPConnectionProvider: NSObject, GCDAsyncUdpSocketDelegate {
-//    #if targetEnvironment(simulator)
-//    let ip: String = "192.168.0.23"
-//    #else
-//    let ip: String = "192.168.0.31"  // TODO: - Get ip from device that is running the app
-//    #endif
-    public static let shared: UDPConnectionProvider = .init()
+public final class ForzaUDPConnectionProvider: NSObject, GCDAsyncUdpSocketDelegate {
+    public static let shared: ForzaUDPConnectionProvider = .init()
     
     let port: UInt16 = 5000
     var socket: GCDAsyncUdpSocket?
-    let publisher: PassthroughSubject<ForzaDTO, CommonError> = .init()
+    
+    public lazy var asyncStream: AsyncStream<CarDashDTO> = .init { continuation in
+        self.continuation = continuation
+    }
+    var continuation: AsyncStream<CarDashDTO>.Continuation?
     
     private override init() {
         super.init()
@@ -34,16 +33,12 @@ public final class UDPConnectionProvider: NSObject, GCDAsyncUdpSocketDelegate {
             try socket?.bind(toPort: port)
             try socket?.beginReceiving()
         } catch {
-            publisher.send(completion: .failure(.couldNotConnectToIP))
+            self.continuation?.finish()
         }
     }
     
     public func udpSocket(_ sock: GCDAsyncUdpSocket, didReceive data: Data, fromAddress address: Data, withFilterContext filterContext: Any?) {
-        publisher.send(ForzaDTOMapper.map(data: data))
-    }
-    
-    public func getTelemetryData() -> AnyPublisher<ForzaDTO, CommonError> {
-        publisher.eraseToAnyPublisher()
+        self.continuation?.yield(ForzaDTOMapper.map(data: data))
     }
     
     deinit {
