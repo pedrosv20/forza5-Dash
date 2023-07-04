@@ -1,10 +1,10 @@
 import Foundation
 import ComposableArchitecture
-import ForzaRepository
+import CarDataRepository
 
 public struct Dragy: ReducerProtocol {
     public struct State: Equatable {
-        var model: ForzaModel
+        var model: CarDashModel
         var isDragyOn: Bool = false
         var elapsedTime: Double?
         var startDate: Double?
@@ -31,7 +31,7 @@ public struct Dragy: ReducerProtocol {
         }
 
         public init(
-            model: ForzaModel = .init(),
+            model: CarDashModel = .init(),
             isDragyOn: Bool = false,
             elapsedTime: Double? = nil,
             startDate: Double? = nil,
@@ -50,8 +50,9 @@ public struct Dragy: ReducerProtocol {
 
     public enum Action {
         case onAppear
+        case connectWithService
         case loadData
-        case handleLoadedData(Result<ForzaModel, Error>)
+        case handleLoadedData(Result<CarDashModel, Error>)
         case draggyButtonTapped(Bool)
         case handleDragy(State.DragyType)
         case updateDragyType(State.DragyType)
@@ -61,6 +62,7 @@ public struct Dragy: ReducerProtocol {
     public init() {}
     
     @Dependency(\.forzaService) var forzaService
+    @Dependency(\.assetoService) var assetoService
     @Dependency(\.mainQueue) var mainQueue
     
     public var body: some ReducerProtocol<State, Action> {
@@ -68,13 +70,30 @@ public struct Dragy: ReducerProtocol {
             switch action {
             case .onAppear:
                 return .init(value: .loadData)
+                
+            case .connectWithService:
+                let forzaConnected = forzaService.connect()
+                let assetoConnected = assetoService.connect()
+                if assetoConnected || forzaConnected {
+                    return .task { .loadData }
+                } else {
+                    return .none
+                }
+                
 
             case .loadData:
-              return .run { send in
-                for await model in forzaService.getForzaInfoAsync() {
-                    await send(.handleLoadedData(.success(model)))
-                }
-            }
+                return .merge(
+                    .run { send in
+                        for await model in assetoService.getAssetoInfo() {
+                            await send(.handleLoadedData(.success(model)))
+                        }
+                    },
+                    .run { send in
+                        for await model in forzaService.getForzaInfo() {
+                            await send(.handleLoadedData(.success(model)))
+                        }
+                    }
+                )
 
 
             case let .handleLoadedData(.success(model)):

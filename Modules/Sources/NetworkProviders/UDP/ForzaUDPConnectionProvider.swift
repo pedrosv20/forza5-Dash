@@ -19,10 +19,9 @@ public final class ForzaUDPConnectionProvider: NSObject, GCDAsyncUdpSocketDelega
     
     private override init() {
         super.init()
-        setupConnection()
     }
     
-    func setupConnection() {
+    public func setupConnection() -> Bool {
         socket = GCDAsyncUdpSocket(
             delegate: self,
             delegateQueue: .main
@@ -34,7 +33,9 @@ public final class ForzaUDPConnectionProvider: NSObject, GCDAsyncUdpSocketDelega
             try socket?.beginReceiving()
         } catch {
             self.continuation?.finish()
+            return false
         }
+        return true
     }
     
     public func udpSocket(_ sock: GCDAsyncUdpSocket, didReceive data: Data, fromAddress address: Data, withFilterContext filterContext: Any?) {

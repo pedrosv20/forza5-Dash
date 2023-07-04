@@ -1,15 +1,15 @@
 import Combine
 import Dependencies
-import ForzaRepository
+import CarDataRepository
 import Foundation
 import NetworkProviders
 
-public extension ForzaService {
+public extension AssetoService {
     static let live: Self = .init {
-        let sequence = ForzaUDPConnectionProvider.shared
+        let sequence = AssetoUDPConnectionProvider.shared
             .asyncStream
             .map { response in
-                ForzaModel(
+                CarDashModel(
                     gameIsRunning: response.gameIsRunning,
                     maxRPM: response.maxRPM,
                     idleRPM: response.idleRPM,
@@ -34,9 +34,11 @@ public extension ForzaService {
                 )
             }
         return AsyncStream(sequence)
+    } connect: {
+        AssetoUDPConnectionProvider.shared.setupConnection()
     }
 }
 
-extension ForzaService: DependencyKey {
-    public static var liveValue: ForzaService = .live
+extension AssetoService: DependencyKey {
+    public static var liveValue: AssetoService = .live
 }

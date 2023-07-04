@@ -27,6 +27,7 @@ struct RootView: View {
     @ViewBuilder
     func currentView() -> some View {
         switch appContext {
+            // GENERIC
         case .dragy:
             DragyView(store: .init(
                 initialState: Dragy.State(),

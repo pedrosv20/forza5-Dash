@@ -1,6 +1,6 @@
 import Foundation
 
-public struct ForzaModel: Equatable {
+public struct CarDashModel: Equatable {
     public let gameIsRunning: Bool
     public let maxRPM: Float
     public let idleRPM: Float
@@ -71,7 +71,7 @@ public struct ForzaModel: Equatable {
 }
 
 #if DEBUG
-public extension ForzaModel {
+public extension CarDashModel {
     static func fixture(
         gameIsRunning: Bool = true,
         maxRPM: Float = 8000,

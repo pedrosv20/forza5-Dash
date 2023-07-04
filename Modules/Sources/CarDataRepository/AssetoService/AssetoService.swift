@@ -2,31 +2,36 @@ import Combine
 import Dependencies
 import Foundation
 
-public struct ForzaService{
-    public var getForzaInfoAsync: () -> AsyncStream<ForzaModel>
+public struct AssetoService {
+    public var getAssetoInfo: () -> AsyncStream<CarDashModel>
+    public var connect: () -> Bool
     
-    public init(getForzaInfoAsync: @escaping () ->  AsyncStream<ForzaModel>) {
-        self.getForzaInfoAsync = getForzaInfoAsync
+    public init(
+        getAssetoInfo: @escaping () ->  AsyncStream<CarDashModel>,
+        connect: @escaping () -> Bool
+    ) {
+        self.getAssetoInfo = getAssetoInfo
+        self.connect =  connect
     }
 }
 
-extension ForzaService: TestDependencyKey {
-    public static let testValue: ForzaService = .mock
+extension AssetoService: TestDependencyKey {
+    public static let testValue: AssetoService = .mock
 }
 
 extension DependencyValues {
-    public var forzaService:  ForzaService {
-        get { self[ForzaService.self] }
-        set { self[ForzaService.self] = newValue }
+    public var assetoService:  AssetoService {
+        get { self[AssetoService.self] }
+        set { self[AssetoService.self] = newValue }
     }
 }
 
 #if DEBUG
-public extension ForzaService {
+public extension AssetoService {
     static var counter = -1
     static let mock: Self = .init {
         AsyncStream(
-            ForzaModel.self, {
+            CarDashModel.self, {
                 continuation in
                 Task {
                     while true {
@@ -42,6 +47,8 @@ public extension ForzaService {
                 }
             }
         )
+    } connect: {
+        false
     }
 }
 #endif

@@ -1,5 +1,5 @@
 import Dependencies
-import ForzaRepository
+import CarDataRepository
 import Foundation
 
 public extension GetIPAddressUseCase {

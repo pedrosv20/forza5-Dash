@@ -5,7 +5,6 @@ import CocoaAsyncSocket
 
 public final class AssetoUDPConnectionProvider: NSObject, GCDAsyncUdpSocketDelegate {
     public static let shared: AssetoUDPConnectionProvider = .init()
-    var printCount = 0
     var socket: GCDAsyncUdpSocket?
     
     public lazy var asyncStream: AsyncStream<CarDashDTO> = .init { continuation in
@@ -15,10 +14,9 @@ public final class AssetoUDPConnectionProvider: NSObject, GCDAsyncUdpSocketDeleg
     
     private override init() {
         super.init()
-        setupConnection()
     }
     
-    public func setupConnection() {
+    public func setupConnection() -> Bool {
         socket = GCDAsyncUdpSocket(
             delegate: self,
             delegateQueue: .main
@@ -30,13 +28,13 @@ public final class AssetoUDPConnectionProvider: NSObject, GCDAsyncUdpSocketDeleg
             try socket?.connect(toHost: host, onPort: port)
             try socket?.beginReceiving()
         } catch {
-            self.continuation?.finish()
+            return false
         }
         
         let dataToEncode = HandshakerRequest(identifier: 0, version: 1, operationID: 0).convertToData()
 
         socket?.send(dataToEncode, withTimeout: -1, tag: 0)
-        print("enviou")
+        return true
     }
     
     public func udpSocket(_ sock: GCDAsyncUdpSocket, didReceive data: Data, fromAddress address: Data, withFilterContext filterContext: Any?) {
@@ -50,14 +48,7 @@ public final class AssetoUDPConnectionProvider: NSObject, GCDAsyncUdpSocketDeleg
 
     }
     
-    public func udpSocket(_ sock: GCDAsyncUdpSocket, didNotSendDataWithTag tag: Int, dueToError error: Error?) {
-        print(error?.localizedDescription as Any)
-    }
-    
-    public func udpSocket(_ sock: GCDAsyncUdpSocket, didConnectToAddress address: Data) {
-        print("conectou")
-    }
-    
+    // TODO: disconnect every time changing screen?
     deinit {
         socket?.close()
     }

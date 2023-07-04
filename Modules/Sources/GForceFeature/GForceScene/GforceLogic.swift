@@ -1,13 +1,13 @@
 import ComposableArchitecture
-import ForzaRepository
+import CarDataRepository
 import Foundation
 
 public struct GForce: ReducerProtocol {
     public struct State: Equatable {
-        public var model: ForzaModel
+        public var model: CarDashModel
         public var ip: String
         
-        public init(model: ForzaModel = .init(), ip: String = "not connected") {
+        public init(model: CarDashModel = .init(), ip: String = "not connected") {
             self.model = model
             self.ip = ip
         }
@@ -15,11 +15,13 @@ public struct GForce: ReducerProtocol {
 
     public enum Action {
         case onAppear
+        case connectToService
         case requestData
         case getIP
-        case handleRequestedData(Result<ForzaModel, Error>)
+        case handleRequestedData(Result<CarDashModel, Error>)
     }
     @Dependency(\.forzaService) var forzaService
+    @Dependency(\.assetoService) var assetoService
     @Dependency(\.mainQueue) var mainQueue
     @Dependency(\.getIPAddressUseCase) var getIPAddressUseCase
 
@@ -29,14 +31,30 @@ public struct GForce: ReducerProtocol {
         Reduce { state, action in
             switch action {
             case .onAppear:
-                return .merge(.init(value: .getIP), .init(value: Action.requestData))
+                return .merge(.task { .getIP }, .task { .connectToService })
+                
+            case .connectToService:
+                let forzaConnected = forzaService.connect()
+                let assetoConnected = assetoService.connect()
+                if assetoConnected || forzaConnected {
+                    return .task { .requestData }
+                } else {
+                    return .none
+                }
 
             case .requestData:
-                return .run { send in
-                    for await model in forzaService.getForzaInfoAsync() {
-                        await send(.handleRequestedData(.success(model)))
+                return .merge(
+                    .run { send in
+                        for await model in assetoService.getAssetoInfo() {
+                            await send(.handleRequestedData(.success(model)))
+                        }
+                    },
+                    .run { send in
+                        for await model in forzaService.getForzaInfo() {
+                            await send(.handleRequestedData(.success(model)))
+                        }
                     }
-                }
+                )
 
 
             case let .handleRequestedData(.success(model)):
