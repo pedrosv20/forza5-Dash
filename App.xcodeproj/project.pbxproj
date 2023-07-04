@@ -10,14 +10,14 @@
 		070479AD296C6385008E1ADE /* DashFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 070479AC296C6385008E1ADE /* DashFeature */; };
 		070479B3296C6385008E1ADE /* NetworkProviders in Frameworks */ = {isa = PBXBuildFile; productRef = 070479B2296C6385008E1ADE /* NetworkProviders */; };
 		070657E4298994E30042B957 /* CoreUI in Frameworks */ = {isa = PBXBuildFile; productRef = 070657E3298994E30042B957 /* CoreUI */; };
+		0732A4852A3243E20006899E /* CarDataRepository in Frameworks */ = {isa = PBXBuildFile; productRef = 0732A4842A3243E20006899E /* CarDataRepository */; };
+		0732A4872A3243E20006899E /* CarDataRepositoryLive in Frameworks */ = {isa = PBXBuildFile; productRef = 0732A4862A3243E20006899E /* CarDataRepositoryLive */; };
 		0749AA88296370C500BE454E /* ForzaDashApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749AA82296370C400BE454E /* ForzaDashApp.swift */; };
 		0749AA89296370C500BE454E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0749AA83296370C400BE454E /* Assets.xcassets */; };
 		0749AA8A296370C500BE454E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0749AA85296370C400BE454E /* Preview Assets.xcassets */; };
 		0749AA8C296370D400BE454E /* ForzaDashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749AA80296370C400BE454E /* ForzaDashTests.swift */; };
 		075261292996AD4400C0A916 /* GForceFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 075261282996AD4400C0A916 /* GForceFeature */; };
 		075ECC8B296C741600C5FDB5 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075ECC8A296C741600C5FDB5 /* RootView.swift */; };
-		07D581032989937500A17B47 /* ForzaRepository in Frameworks */ = {isa = PBXBuildFile; productRef = 07D581022989937500A17B47 /* ForzaRepository */; };
-		07D581052989937500A17B47 /* ForzaRepositoryLive in Frameworks */ = {isa = PBXBuildFile; productRef = 07D581042989937500A17B47 /* ForzaRepositoryLive */; };
 		07D581072989937900A17B47 /* DragyFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 07D581062989937900A17B47 /* DragyFeature */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +37,7 @@
 		0749AA83296370C400BE454E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0749AA85296370C400BE454E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		075ECC8A296C741600C5FDB5 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		076ABF942A34CC8A00D5F20D /* AppDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppDebug.entitlements; sourceTree = "<group>"; };
 		079C254C2963540B00DBD90D /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		079C255C2963540D00DBD90D /* AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		07BE2DDA29647D4100270FF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -48,12 +49,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				075261292996AD4400C0A916 /* GForceFeature in Frameworks */,
-				07D581032989937500A17B47 /* ForzaRepository in Frameworks */,
 				070479B3296C6385008E1ADE /* NetworkProviders in Frameworks */,
 				07D581072989937900A17B47 /* DragyFeature in Frameworks */,
-				07D581052989937500A17B47 /* ForzaRepositoryLive in Frameworks */,
+				0732A4872A3243E20006899E /* CarDataRepositoryLive in Frameworks */,
 				070479AD296C6385008E1ADE /* DashFeature in Frameworks */,
 				070657E4298994E30042B957 /* CoreUI in Frameworks */,
+				0732A4852A3243E20006899E /* CarDataRepository in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +79,7 @@
 		0749AA81296370C400BE454E /* App */ = {
 			isa = PBXGroup;
 			children = (
+				076ABF942A34CC8A00D5F20D /* AppDebug.entitlements */,
 				07BE2DDA29647D4100270FF3 /* Info.plist */,
 				0749AA82296370C400BE454E /* ForzaDashApp.swift */,
 				0749AA83296370C400BE454E /* Assets.xcassets */,
@@ -140,11 +142,11 @@
 			packageProductDependencies = (
 				070479AC296C6385008E1ADE /* DashFeature */,
 				070479B2296C6385008E1ADE /* NetworkProviders */,
-				07D581022989937500A17B47 /* ForzaRepository */,
-				07D581042989937500A17B47 /* ForzaRepositoryLive */,
 				07D581062989937900A17B47 /* DragyFeature */,
 				070657E3298994E30042B957 /* CoreUI */,
 				075261282996AD4400C0A916 /* GForceFeature */,
+				0732A4842A3243E20006899E /* CarDataRepository */,
+				0732A4862A3243E20006899E /* CarDataRepositoryLive */,
 			);
 			productName = ForzaDash;
 			productReference = 079C254C2963540B00DBD90D /* App.app */;
@@ -375,6 +377,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = App/AppDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -384,11 +387,14 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = App/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.racing-games";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = tse;
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = teste;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -421,11 +427,14 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = App/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.racing-games";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = tse;
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = teste;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -529,17 +538,17 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = CoreUI;
 		};
+		0732A4842A3243E20006899E /* CarDataRepository */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CarDataRepository;
+		};
+		0732A4862A3243E20006899E /* CarDataRepositoryLive */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CarDataRepositoryLive;
+		};
 		075261282996AD4400C0A916 /* GForceFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = GForceFeature;
-		};
-		07D581022989937500A17B47 /* ForzaRepository */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = ForzaRepository;
-		};
-		07D581042989937500A17B47 /* ForzaRepositoryLive */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = ForzaRepositoryLive;
 		};
 		07D581062989937900A17B47 /* DragyFeature */ = {
 			isa = XCSwiftPackageProductDependency;

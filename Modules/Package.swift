@@ -7,8 +7,8 @@ let package = Package(
     name: "Modules",
     platforms: [.iOS(.v16), .macOS(.v13)],
     products: [
-        .library(name: "ForzaRepository", targets: ["ForzaRepository"]),
-        .library(name: "ForzaRepositoryLive", targets: ["ForzaRepositoryLive"]),
+        .library(name: "CarDataRepository", targets: ["CarDataRepository"]),
+        .library(name: "CarDataRepositoryLive", targets: ["CarDataRepositoryLive"]),
         .library(name: "NetworkProviders", targets: ["NetworkProviders"]),
         .library(name: "DashFeature", targets: ["DashFeature"]),
         .library(name: "DragyFeature", targets: ["DragyFeature"]),
@@ -21,16 +21,16 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "ForzaRepository",
+            name: "CarDataRepository",
             dependencies: [
                 .product(name: "Dependencies", package: "swift-composable-architecture")
             ]
         ),
 
         .target(
-            name: "ForzaRepositoryLive",
+            name: "CarDataRepositoryLive",
             dependencies: [
-                "ForzaRepository",
+                "CarDataRepository",
                 "NetworkProviders"
             ]
         ),
@@ -46,7 +46,7 @@ let package = Package(
             name: "DashFeature",
             dependencies: [
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-                "ForzaRepository",
+                "CarDataRepository",
                 "CoreUI"
             ]
         ),
@@ -55,7 +55,7 @@ let package = Package(
                 name: "DragyFeature",
                 dependencies: [
                     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-                    "ForzaRepository",
+                    "CarDataRepository",
                     "CoreUI"
                 ]
             ),
@@ -64,7 +64,7 @@ let package = Package(
                 name: "GForceFeature",
                 dependencies: [
                     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-                    "ForzaRepository",
+                    "CarDataRepository",
                     "CoreUI"
                 ]
             ),
